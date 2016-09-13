@@ -104,6 +104,8 @@ class Remove_Wordpress_Overhead {
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ), 10, 1 );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_styles' ), 10, 1 );
 
+		
+
 		// Load API for generic admin functions
 		if ( is_admin() ) {
 			$this->admin = new Remove_Wordpress_Overhead_Admin_API();

@@ -108,16 +108,15 @@ class Remove_Wordpress_Overhead_Settings {
 	private function settings_fields () {
 
 		$settings['standard'] = array(
-			'title'					=> __( 'Standard', 'remove-wordpress-overhead' ),
-			'description'			=> __( 'These are fairly standard form input fields.', 'remove-wordpress-overhead' ),
+			'title'					=> __( 'Settings', 'remove-wordpress-overhead' ),
+			'description'			=> __( 'Check the boxes to remove stuff', 'remove-wordpress-overhead' ),
 			'fields'				=> array(
 				array(
-					'id' 			=> 'text_field',
-					'label'			=> __( 'Some Text' , 'remove-wordpress-overhead' ),
-					'description'	=> __( 'This is a standard text field.', 'remove-wordpress-overhead' ),
-					'type'			=> 'text',
-					'default'		=> '',
-					'placeholder'	=> __( 'Placeholder text', 'remove-wordpress-overhead' )
+					'id' 			=> 'remove_rsd_link',
+					'label'			=> __( 'Remove RSD Link', 'remove-wordpress-overhead' ),
+					'description'	=> __( '&ltlink rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.site.com/xmlrpc.php?rsd" /&gt', 'remove-wordpress-overhead' ),
+					'type'			=> 'checkbox',
+					'default'		=> ''
 				),
 				array(
 					'id' 			=> 'password_field',
@@ -173,14 +172,7 @@ class Remove_Wordpress_Overhead_Settings {
 					'type'			=> 'checkbox_multi',
 					'options'		=> array( 'square' => 'Square', 'circle' => 'Circle', 'rectangle' => 'Rectangle', 'triangle' => 'Triangle' ),
 					'default'		=> array( 'circle', 'triangle' )
-				)
-			)
-		);
-
-		$settings['extra'] = array(
-			'title'					=> __( 'Extra', 'remove-wordpress-overhead' ),
-			'description'			=> __( 'These are some extra input fields that maybe aren\'t as common as the others.', 'remove-wordpress-overhead' ),
-			'fields'				=> array(
+				),
 				array(
 					'id' 			=> 'number_field',
 					'label'			=> __( 'A Number' , 'remove-wordpress-overhead' ),
