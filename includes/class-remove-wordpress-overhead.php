@@ -289,7 +289,11 @@ class Remove_Wordpress_Overhead {
 	 * @return    void
 	 */
 	private function removeStuff() {
-		//
+		$options = array();
+		$options['rsd_link'] = get_option( $this->_base . 'remove_rsd_link' );
+		if ( $options['rsd_link'] && 'on' == $options['rsd_link'] ) {
+			remove_action('wp_head', 'rsd_link'); // remove really simple discovery link
+		}
 	}
 
 }
