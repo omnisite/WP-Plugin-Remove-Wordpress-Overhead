@@ -39,7 +39,7 @@ class Remove_Wordpress_Overhead_Settings {
 	public function __construct ( $parent ) {
 		$this->parent = $parent;
 
-		$this->base = 'wpt_';
+		$this->base = $this->parent->_base;
 
 		// Initialise settings
 		add_action( 'init', array( $this, 'init_settings' ), 11 );

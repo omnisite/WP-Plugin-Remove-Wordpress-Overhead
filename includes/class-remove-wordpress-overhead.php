@@ -29,6 +29,14 @@ class Remove_Wordpress_Overhead {
 	public $_version;
 
 	/**
+	 * The base prefix.
+	 * @var     string
+	 * @access  public
+	 * @since   1.0.0
+	 */
+	public $_base;
+
+	/**
 	 * The token.
 	 * @var     string
 	 * @access  public
@@ -82,8 +90,9 @@ class Remove_Wordpress_Overhead {
 	 * @since   1.0.0
 	 * @return  void
 	 */
-	public function __construct ( $file = '', $version = '1.0.0' ) {
+	public function __construct ( $file = '', $version = '1.0.0', $base = 'wp_plugin_' ) {
 		$this->_version = $version;
+		$this->_base = $base;
 		$this->_token = 'remove_wordpress_overhead';
 
 		// Load plugin environment variables
@@ -104,8 +113,6 @@ class Remove_Wordpress_Overhead {
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ), 10, 1 );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_styles' ), 10, 1 );
 
-		
-
 		// Load API for generic admin functions
 		if ( is_admin() ) {
 			$this->admin = new Remove_Wordpress_Overhead_Admin_API();
@@ -114,6 +121,8 @@ class Remove_Wordpress_Overhead {
 		// Handle localisation
 		$this->load_plugin_textdomain();
 		add_action( 'init', array( $this, 'load_localisation' ), 0 );
+
+		$this->removeStuff();
 	} // End __construct ()
 
 	/**
@@ -229,9 +238,9 @@ class Remove_Wordpress_Overhead {
 	 * @see Remove_Wordpress_Overhead()
 	 * @return Main Remove_Wordpress_Overhead instance
 	 */
-	public static function instance ( $file = '', $version = '1.0.0' ) {
+	public static function instance ( $file = '', $version = '1.0.0', $base = 'wp_plugin_' ) {
 		if ( is_null( self::$_instance ) ) {
-			self::$_instance = new self( $file, $version );
+			self::$_instance = new self( $file, $version, $base );
 		}
 		return self::$_instance;
 	} // End instance ()
@@ -273,5 +282,14 @@ class Remove_Wordpress_Overhead {
 	private function _log_version_number () {
 		update_option( $this->_token . '_version', $this->_version );
 	} // End _log_version_number ()
+
+	/**
+	 * Do the removing of stuff
+	 * @access    private
+	 * @return    void
+	 */
+	private function removeStuff() {
+		//
+	}
 
 }
