@@ -67,7 +67,7 @@ class Remove_Wordpress_Overhead_Settings {
 	 * @return void
 	 */
 	public function add_menu_item () {
-		$page = add_options_page( __( 'Plugin Settings', 'remove-wordpress-overhead' ) , __( 'Plugin Settings', 'remove-wordpress-overhead' ) , 'manage_options' , $this->parent->_token . '_settings' ,  array( $this, 'settings_page' ) );
+		$page = add_options_page( __( 'Remove WP Overhead', 'remove-wordpress-overhead' ) , __( 'Remove WP Overhead', 'remove-wordpress-overhead' ) , 'manage_options' , $this->parent->_token . '_settings' ,  array( $this, 'settings_page' ) );
 		add_action( 'admin_print_styles-' . $page, array( $this, 'settings_assets' ) );
 	}
 
@@ -278,7 +278,7 @@ class Remove_Wordpress_Overhead_Settings {
 
 		// Build page HTML
 		$html = '<div class="wrap" id="' . $this->parent->_token . '_settings">' . "\n";
-			$html .= '<h2>' . __( 'Plugin Settings' , 'remove-wordpress-overhead' ) . '</h2>' . "\n";
+			$html .= '<h2>' . __( 'Remove WP Overhead Settings' , 'remove-wordpress-overhead' ) . '</h2>' . "\n";
 
 			$tab = '';
 			if ( isset( $_GET['tab'] ) && $_GET['tab'] ) {

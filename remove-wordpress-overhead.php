@@ -2,18 +2,18 @@
 /*
  * Plugin Name: Remove Wordpress Overhead
  * Version: 1.0.0
- * Plugin URI: http://www.hughlashbrooke.com/
- * Description: This is your starter template for your next WordPress plugin.
- * Author: Hugh Lashbrooke
- * Author URI: http://www.hughlashbrooke.com/
- * Requires at least: 4.0
- * Tested up to: 4.0
+ * Plugin URI: http://www.omnisite.nl
+ * Description: Remove overhead from the <head> HTML and disable widgets you don't use
+ * Author: Omniisite
+ * Author URI: http://www.omnisite.nl
+ * Requires at least: 3.9
+ * Tested up to: 4.6
  *
  * Text Domain: remove-wordpress-overhead
  * Domain Path: /lang/
  *
  * @package WordPress
- * @author Hugh Lashbrooke
+ * @author Omnisite
  * @since 1.0.0
  */
 

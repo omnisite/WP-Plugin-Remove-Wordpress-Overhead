@@ -1,18 +1,18 @@
 === Remove Wordpress Overhead ===
-Contributors: hlashbrooke
-Donate link: http://www.hughlashbrooke.com/donate
-Tags: wordpress, plugin, template
+Contributors: Omnisite
+Donate: Paypal address sener@dds.nl
+Tags: wordpress, header, widgets, remove, clean, strip, version, disable, rsd link, wp generator, feed link, wlwmanifest, emojicons, json api
 Requires at least: 3.9
-Tested up to: 4.0
-Stable tag: 1.0
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tested up to: 4.6
+Stable tag: 1.0.0
+License: GPLv3 or later
+License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-This is where you craft a short, punchy description of your plugin
+Remove overhead from the <head> HTML and disable widgets you don't use
 
 == Description ==
 
-This is where you can give a much longer description of your plugin that you can use to explain just how it awesome it really is.
+A standard WP installation contains many links in the head of your HTML. Things like RSD link, feed link, WP generator, JSON API link, emojicon links and javascript, many standard widgets, and more. Now you can choose which of these things you would like to remove. Just install and check the items in the settings you want removed.
 
 == Installation ==
 
@@ -24,9 +24,7 @@ Installing "Remove Wordpress Overhead" can be done either by searching for "Remo
 
 == Screenshots ==
 
-1. Description of first screenshot named screenshot-1
-2. Description of second screenshot named screenshot-2
-3. Description of third screenshot named screenshot-3
+1. screenshot-1: settings screen
 
 == Frequently Asked Questions ==
 
@@ -36,12 +34,6 @@ This plugin template is designed to help you get started with any new WordPress 
 
 == Changelog ==
 
-= 1.0 =
-* 2012-12-13
-* Initial release
-
-== Upgrade Notice ==
-
-= 1.0 =
-* 2012-12-13
+= 1.0.0 =
+* 2016-09-01
 * Initial release
