@@ -139,6 +139,27 @@ class Remove_Wordpress_Overhead_Settings {
 					'type'			=> 'checkbox',
 					'default'		=> ''
 				),
+				array(
+					'id' 			=> 'remove_shortlink',
+					'label'			=> __( 'Remove Shortlink URL', 'remove-wordpress-overhead' ),
+					'description'	=> __( '&lt;link rel="shortlink" href="http://www.site.com/some-slug/" /&gt;', 'remove-wordpress-overhead' ),
+					'type'			=> 'checkbox',
+					'default'		=> ''
+				),
+				array(
+					'id' 			=> 'remove_shortlink',
+					'label'			=> __( 'Remove Shortlink URL', 'remove-wordpress-overhead' ),
+					'description'	=> __( '&lt;link rel="shortlink" href="http://www.site.com/some-slug/" /&gt;', 'remove-wordpress-overhead' ),
+					'type'			=> 'checkbox',
+					'default'		=> ''
+				),
+				array(
+					'id' 			=> 'remove_wp_generator',
+					'label'			=> __( 'Remove WP Generator Meta', 'remove-wordpress-overhead' ),
+					'description'	=> __( '&lt;meta name="generator" content="WordPress x.x.x" /&gt;', 'remove-wordpress-overhead' ),
+					'type'			=> 'checkbox',
+					'default'		=> ''
+				),
 			)
 		);
 
