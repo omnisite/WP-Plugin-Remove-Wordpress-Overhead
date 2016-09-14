@@ -132,6 +132,13 @@ class Remove_Wordpress_Overhead_Settings {
 					'type'			=> 'checkbox',
 					'default'		=> ''
 				),
+				array(
+					'id' 			=> 'remove_next_prev_links',
+					'label'			=> __( 'Remove Next &amp; Prev Post Links', 'remove-wordpress-overhead' ),
+					'description'	=> __( '&lt;link rel="prev|prev" title="Some Post Title" href="http://www.site.com/some-slug/" /&gt;', 'remove-wordpress-overhead' ),
+					'type'			=> 'checkbox',
+					'default'		=> ''
+				),
 			)
 		);
 
