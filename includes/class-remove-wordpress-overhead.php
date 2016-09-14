@@ -310,6 +310,13 @@ class Remove_Wordpress_Overhead {
 			remove_action('wp_head', 'feed_links_extra', 3);
 		}
 
+		// remove the next and previous post links
+		$options['feed_links'] = get_option( $this->_base . 'remove_next_prev_links' );
+		if ( $options['feed_links'] && 'on' == $options['feed_links'] ) {
+			remove_action('wp_head', 'adjacent_posts_rel_link', 10, 0);
+			remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0 );
+		}
+
 	}
 
 }
