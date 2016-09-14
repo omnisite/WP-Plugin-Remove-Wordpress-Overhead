@@ -167,6 +167,20 @@ class Remove_Wordpress_Overhead_Settings {
 					'type'			=> 'checkbox',
 					'default'		=> ''
 				),
+				array(
+					'id' 			=> 'disable_wp_emojicons',
+					'label'			=> __( 'Disable WP Emojicons', 'remove-wordpress-overhead' ),
+					'description'	=> __( 'Emoji CSS styles in header', 'remove-wordpress-overhead' ),
+					'type'			=> 'checkbox',
+					'default'		=> ''
+				),
+				array(
+					'id' 			=> 'disable_json_api',
+					'label'			=> __( 'Disable JSON API', 'remove-wordpress-overhead' ),
+					'description'	=> __( '&lt;link rel="https://api.w.org/" href="http://www.site.com/wp-json/"" /&gt;', 'remove-wordpress-overhead' ),
+					'type'			=> 'checkbox',
+					'default'		=> ''
+				),
 			)
 		);
 
