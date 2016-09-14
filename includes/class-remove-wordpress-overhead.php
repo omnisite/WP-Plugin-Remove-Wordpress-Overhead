@@ -326,7 +326,10 @@ class Remove_Wordpress_Overhead {
 		// remove wordpress generator version
 		$options['wp_generator'] = get_option( $this->_base . 'remove_wp_generator' );
 		if ( $options['wp_generator'] && 'on' == $options['wp_generator'] ) {
-			remove_action('wp_head', 'wp_generator');
+			function wp_remove_version() {
+				return '';
+			}
+			add_filter('the_generator', 'wp_remove_version');
 		}
 
 	}

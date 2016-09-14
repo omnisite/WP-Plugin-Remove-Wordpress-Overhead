@@ -160,6 +160,13 @@ class Remove_Wordpress_Overhead_Settings {
 					'type'			=> 'checkbox',
 					'default'		=> ''
 				),
+				array(
+					'id' 			=> 'remove_version_numbers_from_style_script',
+					'label'			=> __( 'Remove Version Numbers from Style and Script Links', 'remove-wordpress-overhead' ),
+					'description'	=> __( 'src="http://www.site.com/js/some-script.js?ver=x.x.x and src="http://www.site.com/css/some-style.css?ver=x.x.x', 'remove-wordpress-overhead' ),
+					'type'			=> 'checkbox',
+					'default'		=> ''
+				),
 			)
 		);
 
