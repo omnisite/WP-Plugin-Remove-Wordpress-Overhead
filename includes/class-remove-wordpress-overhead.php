@@ -286,6 +286,7 @@ class Remove_Wordpress_Overhead {
 	/**
 	 * Do the removing of stuff
 	 * @access    private
+	 * @since     1.0.0
 	 * @return    void
 	 */
 	private function removeStuff() {
@@ -374,24 +375,57 @@ class Remove_Wordpress_Overhead {
 		// disable json api and remove link from header
 		$options['json_api'] = get_option( $this->_base . 'disable_json_api' );
 		if ( $options['json_api'] && 'on' == $options['json_api'] ) {
-			function remove_json_api () {
-				remove_action( 'wp_head', 'rest_output_link_wp_head', 10 );
-				remove_action( 'wp_head', 'wp_oembed_add_discovery_links', 10 );
-				remove_action( 'rest_api_init', 'wp_oembed_register_route' );
-				add_filter( 'embed_oembed_discover', '__return_false' );
-				remove_filter( 'oembed_dataparse', 'wp_filter_oembed_result', 10 );
-				remove_action( 'wp_head', 'wp_oembed_add_discovery_links' );
-				remove_action( 'wp_head', 'wp_oembed_add_host_js' );
-			}
-			add_action( 'after_setup_theme', 'remove_json_api' );
+			add_action( 'after_setup_theme', array( $this, 'remove_json_api' ) );
+			add_action( 'after_setup_theme', array( $this, 'disable_json_api' ) );
+		}
 
-			function disable_json_api () {
-				add_filter('json_enabled', '__return_false');
-				add_filter('json_jsonp_enabled', '__return_false');
-				add_filter('rest_enabled', '__return_false');
-				add_filter('rest_jsonp_enabled', '__return_false');
-			}
-			add_action( 'after_setup_theme', 'disable_json_api' );
+		// disable wp widgets
+		$options['widgets'] = get_option( $this->_base . 'disable_wp_widgets' );
+		if ( $options['widgets'] && '' != $options['widgets'] && is_array( $options['widgets'] ) ) {
+			// unregister widgets
+			add_action('widgets_init', array( $this, 'unregister_default_widgets' ), 11);
+		}
+	}
+
+	/**
+	 * Remove JSON API links from header
+	 * @access    public
+	 * @since     1.0.0
+	 * @return    void
+	 */
+	public function remove_json_api () {
+		remove_action( 'wp_head', 'rest_output_link_wp_head', 10 );
+		remove_action( 'wp_head', 'wp_oembed_add_discovery_links', 10 );
+		remove_action( 'rest_api_init', 'wp_oembed_register_route' );
+		add_filter( 'embed_oembed_discover', '__return_false' );
+		remove_filter( 'oembed_dataparse', 'wp_filter_oembed_result', 10 );
+		remove_action( 'wp_head', 'wp_oembed_add_discovery_links' );
+		remove_action( 'wp_head', 'wp_oembed_add_host_js' );
+	}
+
+	/**
+	 * Disable JSON API
+	 * @access    public
+	 * @since     1.0.0
+	 * @return    void
+	 */
+	public function disable_json_api () {
+		add_filter('json_enabled', '__return_false');
+		add_filter('json_jsonp_enabled', '__return_false');
+		add_filter('rest_enabled', '__return_false');
+		add_filter('rest_jsonp_enabled', '__return_false');
+	}
+
+	/**
+	 * Unregister WP Widgets
+	 * @access    public
+	 * @since     1.0.0
+	 * @return    void
+	 */
+	public function unregister_default_widgets() {
+		$options['widgets'] = get_option( $this->_base . 'disable_wp_widgets' );
+		foreach( $options['widgets'] as $widget ) {
+			unregister_widget( $widget );
 		}
 	}
 
