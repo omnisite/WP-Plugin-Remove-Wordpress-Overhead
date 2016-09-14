@@ -371,6 +371,28 @@ class Remove_Wordpress_Overhead {
 			add_action( 'init', 'disable_wp_emojicons' );
 		}
 
+		// disable json api and remove link from header
+		$options['json_api'] = get_option( $this->_base . 'disable_json_api' );
+		if ( $options['json_api'] && 'on' == $options['json_api'] ) {
+			function remove_json_api () {
+				remove_action( 'wp_head', 'rest_output_link_wp_head', 10 );
+				remove_action( 'wp_head', 'wp_oembed_add_discovery_links', 10 );
+				remove_action( 'rest_api_init', 'wp_oembed_register_route' );
+				add_filter( 'embed_oembed_discover', '__return_false' );
+				remove_filter( 'oembed_dataparse', 'wp_filter_oembed_result', 10 );
+				remove_action( 'wp_head', 'wp_oembed_add_discovery_links' );
+				remove_action( 'wp_head', 'wp_oembed_add_host_js' );
+			}
+			add_action( 'after_setup_theme', 'remove_json_api' );
+
+			function disable_json_api () {
+				add_filter('json_enabled', '__return_false');
+				add_filter('json_jsonp_enabled', '__return_false');
+				add_filter('rest_enabled', '__return_false');
+				add_filter('rest_jsonp_enabled', '__return_false');
+			}
+			add_action( 'after_setup_theme', 'disable_json_api' );
+		}
 	}
 
 }
