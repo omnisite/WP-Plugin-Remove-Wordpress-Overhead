@@ -290,10 +290,26 @@ class Remove_Wordpress_Overhead {
 	 */
 	private function removeStuff() {
 		$options = array();
+
+		// remove really simple discovery link
 		$options['rsd_link'] = get_option( $this->_base . 'remove_rsd_link' );
 		if ( $options['rsd_link'] && 'on' == $options['rsd_link'] ) {
-			remove_action('wp_head', 'rsd_link'); // remove really simple discovery link
+			remove_action('wp_head', 'rsd_link');
 		}
+
+		// remove wlwmanifest.xml (needed to support windows live writer)
+		$options['wlwmanifest'] = get_option( $this->_base . 'remove_wlwmanifest_link' );
+		if ( $options['wlwmanifest'] && 'on' == $options['wlwmanifest'] ) {
+			remove_action('wp_head', 'wlwmanifest_link'); 
+		}
+
+		// remove rss feed and exta feed links (make sure you add them in yourself if you are using as RSS service
+		$options['feed_links'] = get_option( $this->_base . 'remove_rss_feed_links' );
+		if ( $options['feed_links'] && 'on' == $options['feed_links'] ) {
+			remove_action('wp_head', 'feed_links', 2);
+			remove_action('wp_head', 'feed_links_extra', 3);
+		}
+
 	}
 
 }
