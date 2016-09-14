@@ -1,7 +1,7 @@
 === Remove Wordpress Overhead ===
 Contributors: Omnisite
 Donate: Paypal address sener@dds.nl
-Tags: wordpress, header, widgets, remove, clean, strip, version, disable, rsd link, wp generator, feed link, wlwmanifest, emojicons, json api
+Tags: wordpress, header, remove widgets, disable widgets, remove, clean, strip, version, disable, rsd link, wp generator, feed link, rss feed, shortlink, next, prev, wp generator, version number, wlwmanifest, emojicons, json api
 Requires at least: 3.9
 Tested up to: 4.6
 Stable tag: 1.0.0
@@ -25,12 +25,6 @@ Installing "Remove Wordpress Overhead" can be done either by searching for "Remo
 == Screenshots ==
 
 1. screenshot-1: settings screen
-
-== Frequently Asked Questions ==
-
-= What is the plugin template for? =
-
-This plugin template is designed to help you get started with any new WordPress plugin.
 
 == Changelog ==
 
