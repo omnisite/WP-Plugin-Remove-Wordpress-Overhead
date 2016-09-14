@@ -29,5 +29,5 @@ Installing "Remove Wordpress Overhead" can be done either by searching for "Remo
 == Changelog ==
 
 = 1.0.0 =
-* 2016-09-01
+* 2016-09-14
 * Initial release
