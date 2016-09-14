@@ -332,6 +332,20 @@ class Remove_Wordpress_Overhead {
 			add_filter('the_generator', 'wp_remove_version');
 		}
 
+		// remove ver= after style and script links
+		$options['ver'] = get_option( $this->_base . 'remove_version_numbers_from_style_script' );
+		if ( $options['ver'] && 'on' == $options['ver'] ) {
+			add_filter( 'style_loader_src', 'remove_ver_css_js', 9999 );
+			add_filter( 'script_loader_src', 'remove_ver_css_js', 9999 );
+
+			function remove_ver_css_js( $src ) {
+				if ( strpos( $src, 'ver=' ) ) {
+					$src = remove_query_arg( 'ver', $src );
+				}
+				return $src;
+			}
+		}
+
 	}
 
 }
