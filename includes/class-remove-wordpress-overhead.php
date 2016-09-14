@@ -317,6 +317,18 @@ class Remove_Wordpress_Overhead {
 			remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0 );
 		}
 
+		// remove the shortlink url from header
+		$options['shortlink'] = get_option( $this->_base . 'remove_shortlink' );
+		if ( $options['shortlink'] && 'on' == $options['shortlink'] ) {
+			remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0 );
+		}
+
+		// remove wordpress generator version
+		$options['wp_generator'] = get_option( $this->_base . 'remove_wp_generator' );
+		if ( $options['wp_generator'] && 'on' == $options['wp_generator'] ) {
+			remove_action('wp_head', 'wp_generator');
+		}
+
 	}
 
 }
