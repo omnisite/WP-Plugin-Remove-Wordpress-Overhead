@@ -170,7 +170,7 @@ class Remove_Wordpress_Overhead_Settings {
 				array(
 					'id' 			=> 'disable_wp_emojicons',
 					'label'			=> __( 'Disable WP Emojicons', 'remove-wordpress-overhead' ),
-					'description'	=> __( 'Emoji CSS styles in header', 'remove-wordpress-overhead' ),
+					'description'	=> __( 'Emoji CSS styles and javascript in header', 'remove-wordpress-overhead' ),
 					'type'			=> 'checkbox',
 					'default'		=> ''
 				),
