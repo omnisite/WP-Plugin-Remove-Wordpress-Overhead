@@ -114,14 +114,21 @@ class Remove_Wordpress_Overhead_Settings {
 				array(
 					'id' 			=> 'remove_rsd_link',
 					'label'			=> __( 'Remove RSD Link', 'remove-wordpress-overhead' ),
-					'description'	=> __( '&ltlink rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.site.com/xmlrpc.php?rsd" /&gt', 'remove-wordpress-overhead' ),
+					'description'	=> __( '&lt;link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.site.com/xmlrpc.php?rsd" /&gt;', 'remove-wordpress-overhead' ),
 					'type'			=> 'checkbox',
 					'default'		=> ''
 				),
 				array(
 					'id' 			=> 'remove_wlwmanifest_link',
 					'label'			=> __( 'Remove WLW Manifest Link', 'remove-wordpress-overhead' ),
-					'description'	=> __( '&ltllink rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.site.com/wp-includes/wlwmanifest.xml" /&gt', 'remove-wordpress-overhead' ),
+					'description'	=> __( '&lt;link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.site.com/wp-includes/wlwmanifest.xml" /&gt;', 'remove-wordpress-overhead' ),
+					'type'			=> 'checkbox',
+					'default'		=> ''
+				),
+				array(
+					'id' 			=> 'remove_rss_feed_links',
+					'label'			=> __( 'Remove RSS Feed Links', 'remove-wordpress-overhead' ),
+					'description'	=> __( '&lt;link rel="alternate" type="application/rss+xml" title="Site name &raquo; (Comments) Feed" href="http://www.site.com/(comments)/feed" /&gt;', 'remove-wordpress-overhead' ),
 					'type'			=> 'checkbox',
 					'default'		=> ''
 				),
