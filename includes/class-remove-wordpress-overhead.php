@@ -118,7 +118,12 @@ class Remove_Wordpress_Overhead {
 		$this->load_plugin_textdomain();
 		add_action( 'init', array( $this, 'load_localisation' ), 0 );
 
+		// do the actual removing of stuff
 		$this->removeStuff();
+
+		// delete transients on save options page
+		add_action( 'load-settings_page_remove_wordpress_overhead_settings', array( $this, 'deleteTransients' ) );
+
 	} // End __construct ()
 
 	/**
@@ -400,6 +405,18 @@ class Remove_Wordpress_Overhead {
 		$options['widgets'] = get_option( $this->_base . 'disable_wp_widgets' );
 		foreach( $options['widgets'] as $widget ) {
 			unregister_widget( $widget );
+		}
+	}
+
+	/**
+	 * Delete settings transient on save options page
+	 * @access    public
+	 * @since     1.0.0
+	 * @return    void
+	 */
+	public function deleteTransients() {
+		if( isset( $_GET['settings-updated'] ) && $_GET['settings-updated'] ) {
+			delete_transient( $this->_base . 'transient_settings' );
 		}
 	}
 
