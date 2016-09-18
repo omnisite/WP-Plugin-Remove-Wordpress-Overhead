@@ -270,41 +270,49 @@ class Remove_Wordpress_Overhead {
 	 */
 	private function removeStuff() {
 		$options = array();
+		// get transient with options or set it of not available
+		if ( false === $options = get_transient( $this->_base . 'transient_settings' ) ) {
+			$options['rsd_link'] = get_option( $this->_base . 'remove_rsd_link' );
+			$options['wlwmanifest'] = get_option( $this->_base . 'remove_wlwmanifest_link' );
+			$options['feed_links'] = get_option( $this->_base . 'remove_rss_feed_links' );
+			$options['next_prev'] = get_option( $this->_base . 'remove_next_prev_links' );
+			$options['shortlink'] = get_option( $this->_base . 'remove_shortlink' );
+			$options['wp_generator'] = get_option( $this->_base . 'remove_wp_generator' );
+			$options['ver'] = get_option( $this->_base . 'remove_version_numbers_from_style_script' );
+			$options['emojicons'] = get_option( $this->_base . 'disable_wp_emojicons' );
+			$options['json_api'] = get_option( $this->_base . 'disable_json_api' );
+			$options['widgets'] = get_option( $this->_base . 'disable_wp_widgets' );
+			set_transient( $this->_base . 'transient_settings', $options );
+		}
 
 		// remove really simple discovery link
-		$options['rsd_link'] = get_option( $this->_base . 'remove_rsd_link' );
 		if ( $options['rsd_link'] && 'on' == $options['rsd_link'] ) {
 			remove_action('wp_head', 'rsd_link');
 		}
 
 		// remove wlwmanifest.xml (needed to support windows live writer)
-		$options['wlwmanifest'] = get_option( $this->_base . 'remove_wlwmanifest_link' );
 		if ( $options['wlwmanifest'] && 'on' == $options['wlwmanifest'] ) {
 			remove_action('wp_head', 'wlwmanifest_link'); 
 		}
 
 		// remove rss feed and exta feed links (make sure you add them in yourself if you are using as RSS service
-		$options['feed_links'] = get_option( $this->_base . 'remove_rss_feed_links' );
 		if ( $options['feed_links'] && 'on' == $options['feed_links'] ) {
 			remove_action('wp_head', 'feed_links', 2);
 			remove_action('wp_head', 'feed_links_extra', 3);
 		}
 
 		// remove the next and previous post links
-		$options['feed_links'] = get_option( $this->_base . 'remove_next_prev_links' );
-		if ( $options['feed_links'] && 'on' == $options['feed_links'] ) {
+		if ( $options['next_prev'] && 'on' == $options['next_prev'] ) {
 			remove_action('wp_head', 'adjacent_posts_rel_link', 10, 0);
 			remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0 );
 		}
 
 		// remove the shortlink url from header
-		$options['shortlink'] = get_option( $this->_base . 'remove_shortlink' );
 		if ( $options['shortlink'] && 'on' == $options['shortlink'] ) {
 			remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0 );
 		}
 
 		// remove wordpress generator version
-		$options['wp_generator'] = get_option( $this->_base . 'remove_wp_generator' );
 		if ( $options['wp_generator'] && 'on' == $options['wp_generator'] ) {
 			function wp_remove_version() {
 				return '';
@@ -313,7 +321,6 @@ class Remove_Wordpress_Overhead {
 		}
 
 		// remove ver= after style and script links
-		$options['ver'] = get_option( $this->_base . 'remove_version_numbers_from_style_script' );
 		if ( $options['ver'] && 'on' == $options['ver'] ) {
 			add_filter( 'style_loader_src', 'remove_ver_css_js', 9999 );
 			add_filter( 'script_loader_src', 'remove_ver_css_js', 9999 );
@@ -327,7 +334,6 @@ class Remove_Wordpress_Overhead {
 		}
 
 		// remove emoji styles and script from header
-		$options['emojicons'] = get_option( $this->_base . 'disable_wp_emojicons' );
 		if ( $options['emojicons'] && 'on' == $options['emojicons'] ) {
 			function disable_wp_emojicons() {
 				remove_action( 'admin_print_styles', 'print_emoji_styles' );
@@ -352,14 +358,12 @@ class Remove_Wordpress_Overhead {
 		}
 
 		// disable json api and remove link from header
-		$options['json_api'] = get_option( $this->_base . 'disable_json_api' );
 		if ( $options['json_api'] && 'on' == $options['json_api'] ) {
 			add_action( 'after_setup_theme', array( $this, 'remove_json_api' ) );
 			add_action( 'after_setup_theme', array( $this, 'disable_json_api' ) );
 		}
 
 		// disable wp widgets
-		$options['widgets'] = get_option( $this->_base . 'disable_wp_widgets' );
 		if ( $options['widgets'] && '' != $options['widgets'] && is_array( $options['widgets'] ) ) {
 			// unregister widgets
 			add_action('widgets_init', array( $this, 'unregister_default_widgets' ), 11);
