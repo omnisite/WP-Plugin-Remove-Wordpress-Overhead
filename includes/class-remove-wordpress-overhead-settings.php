@@ -109,7 +109,7 @@ class Remove_Wordpress_Overhead_Settings {
 
 		$settings['standard'] = array(
 			'title'					=> __( 'Settings', 'remove-wordpress-overhead' ),
-			'description'			=> __( 'Check the boxes to remove stuff', 'remove-wordpress-overhead' ),
+			'description'			=> __( 'Check the boxes to remove stuff and keep your HTML and WP clean.', 'remove-wordpress-overhead' ),
 			'fields'				=> array(
 				array(
 					'id' 			=> 'remove_rsd_link',

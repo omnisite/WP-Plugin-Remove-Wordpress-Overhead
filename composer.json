@@ -1,0 +1,7 @@
+{
+    "name": "omnisite/remove-wordpress-overhead",
+    "description": "Remove overhead from the <head> HTML and disable widgets you don't use",
+    "require": {
+        "php": ">=5.3.0"
+    }
+}
