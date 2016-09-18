@@ -1,6 +1,10 @@
 {
     "name": "omnisite/remove-wp-overhead",
     "description": "Remove overhead from the <head> HTML and disable widgets you don't use",
+    "keywords": [
+    	"wordpress"
+    ],
+    "license": "GPL-3.0+",
     "require": {
         "php": ">=5.3.0"
     }
