@@ -4,7 +4,7 @@
  * Version: 1.0.0
  * Plugin URI: http://www.omnisite.nl
  * Description: Remove overhead from the <head> HTML and disable widgets you don't use
- * Author: Omniisite
+ * Author: Omnisite
  * Author URI: http://www.omnisite.nl
  * Requires at least: 3.9
  * Tested up to: 4.6
