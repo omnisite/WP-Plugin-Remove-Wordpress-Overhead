@@ -1,10 +1,10 @@
 === Remove Wordpress Overhead ===
 Contributors: Omnisite
-Donate: Paypal address sener@dds.nl
+Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=8ZS4SEBD4EA7W
 Tags: wordpress, header, remove widgets, disable widgets, remove, clean, strip, version, disable, rsd link, wp generator, feed link, rss feed, shortlink, next, prev, wp generator, version number, wlwmanifest, emojicons, json api
 Requires at least: 3.9
 Tested up to: 4.6
-Stable tag: 1.0.0
+Stable tag: 1.0.2
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -12,7 +12,33 @@ Remove overhead from the <head> HTML and disable widgets you don't use
 
 == Description ==
 
-A standard WP installation contains many links in the head of your HTML. Things like RSD link, feed link, WP generator, JSON API link, emojicon links and javascript, many standard widgets, and more. Now you can choose which of these things you would like to remove. Just install and check the items in the settings you want removed.
+A standard WP installation contains many links in the head of your HTML and has standard widgets you might never use. You can now install this plugin and check the items you want to have removed. The saved options are cached for better performance.
+
+Header items you can remove:
+* Remove RSD Link
+* Remove WLW Manifest Link
+* Remove RSS Feed Links
+* Remove Next & Prev Post Links
+* Remove Shortlink URL
+* Remove WP Generator Meta
+* Remove Version Numbers from Style and Script Links
+* Disable WP Emojicons
+* Disable JSON API
+
+You can disable the following widgets:
+* Archives
+* Calendar
+* Categories
+* Links
+* Meta
+* Nav Menu
+* Pages
+* Recent Comments
+* Recent Posts
+* RSS
+* Search
+* Tag Cloud
+* Text
 
 == Installation ==
 
@@ -27,6 +53,16 @@ Installing "Remove Wordpress Overhead" can be done either by searching for "Remo
 1. screenshot-1: settings screen
 
 == Changelog ==
+
+= 1.0.2 =
+* 2016-09-23
+* Correct author name in php file
+* Add donate link in readme
+* Better readme text
+
+= 1.0.1 =
+* 2016-09-18
+* Add license in composer.json
 
 = 1.0.0 =
 * 2016-09-18
