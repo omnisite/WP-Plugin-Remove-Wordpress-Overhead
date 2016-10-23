@@ -1,4 +1,5 @@
 <?php
+namespace Remove_Wordpress_Overhead;
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 

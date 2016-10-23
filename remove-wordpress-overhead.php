@@ -19,6 +19,9 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
+use Remove_Wordpress_Overhead\Remove_Wordpress_Overhead;
+use Remove_Wordpress_Overhead\Remove_Wordpress_Overhead_Settings;
+
 // Load plugin class files
 require_once( 'includes/class-remove-wordpress-overhead.php' );
 require_once( 'includes/class-remove-wordpress-overhead-settings.php' );
