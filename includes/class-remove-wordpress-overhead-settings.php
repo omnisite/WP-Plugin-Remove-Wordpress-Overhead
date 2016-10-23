@@ -245,7 +245,7 @@ class Remove_Wordpress_Overhead_Settings {
 
 	public function settings_section ( $section ) {
 		$html = '<p> ' . $this->settings[ $section['id'] ]['description'] . '</p>' . "\n";
-		$html .= '<input type="checkbox" id="' . $this->parent->_token . '_selectall"> Select all</input>';
+		$html .= '<div class="remove-wordpress-overhead_slide_selectall"><input type="checkbox" id="' . $this->parent->_token . '_selectall"></input><label for="' . $this->parent->_token . '_selectall"></label> Select all</div>';
 		echo $html;
 	}
 

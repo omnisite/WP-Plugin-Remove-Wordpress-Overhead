@@ -104,7 +104,7 @@ class Remove_Wordpress_Overhead_Admin_API {
 				if ( $data && 'on' == $data ) {
 					$checked = 'checked="checked"';
 				}
-				$html .= '<input id="' . esc_attr( $field['id'] ) . '" type="' . esc_attr( $field['type'] ) . '" name="' . esc_attr( $option_name ) . '" ' . $checked . '/>' . "\n";
+				$html .= '<div class="remove-wordpress-overhead_slide_checkbox"><input id="' . esc_attr( $field['id'] ) . '" type="' . esc_attr( $field['type'] ) . '" name="' . esc_attr( $option_name ) . '" ' . $checked . '/><label for="' . esc_attr( $field['id'] ) . '"></label></div>' . "\n";
 			break;
 
 			case 'checkbox_multi':
@@ -113,7 +113,7 @@ class Remove_Wordpress_Overhead_Admin_API {
 					if ( in_array( $k, (array) $data ) ) {
 						$checked = true;
 					}
-					$html .= '<label for="' . esc_attr( $field['id'] . '_' . $k ) . '" class="checkbox_multi"><input type="checkbox" ' . checked( $checked, true, false ) . ' name="' . esc_attr( $option_name ) . '[]" value="' . esc_attr( $k ) . '" id="' . esc_attr( $field['id'] . '_' . $k ) . '" /> ' . $v . '</label> ';
+					$html .= '<div class="remove-wordpress-overhead_slide_selectall"><input type="checkbox" ' . checked( $checked, true, false ) . ' name="' . esc_attr( $option_name ) . '[]" value="' . esc_attr( $k ) . '" id="' . esc_attr( $field['id'] . '_' . $k ) . '" /> ' . $v . '<label for="' . esc_attr( $field['id'] . '_' . $k ) . '"></label></div> ';
 				}
 			break;
 

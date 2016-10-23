@@ -54,8 +54,12 @@ Installing "Remove Wordpress Overhead" can be done either by searching for "Remo
 
 == Changelog ==
 
-= 1.0.2 =
+= 1.1.0 =
 * 2016-10-23
+* add plugin git URL
+* add "select all" op settings page
+* namespace classes to avoid function name collisions
+* add css sliders and checkboxes on settings page
 
 = 1.0.2 =
 * 2016-09-23
