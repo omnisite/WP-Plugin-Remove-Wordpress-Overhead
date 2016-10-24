@@ -8,14 +8,14 @@ Stable tag: 1.1.0
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-Remove overhead from the <head> HTML and disable widgets you don't use
+Remove overhead from the <head> HTML, speed up your site and disable widgets you don't use
 
 == Description ==
 
-A standard WP installation contains many links in the head of your HTML and has standard widgets you might never use. You can now install this plugin and check the items you want to have removed. The saved options are cached for better performance.
+A standard WP installation contains many links in the head of your HTML (which slow down your site) and has standard widgets you might never use. You can now install this plugin and check the items you want to have removed. The saved options are cached for better performance.
 
 Header items you can remove:
-* Remove RSD Link
+* Remove RSD / EditURI Link
 * Remove WLW Manifest Link
 * Remove RSS Feed Links
 * Remove Next & Prev Post Links
