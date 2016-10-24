@@ -56,10 +56,12 @@ Installing "Remove Wordpress Overhead" can be done either by searching for "Remo
 
 = 1.1.0 =
 * 2016-10-23
+* ability to remove canonical url from header
 * add plugin git URL
 * add "select all" op settings page
 * namespace classes to avoid function name collisions
 * add css sliders and checkboxes on settings page
+* added info buttons on the settings page
 
 = 1.0.2 =
 * 2016-09-23
