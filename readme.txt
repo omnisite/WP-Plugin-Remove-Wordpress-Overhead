@@ -8,7 +8,7 @@ Stable tag: 1.1.0
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-Remove overhead from the <head> HTML, speed up your site and disable widgets you don't use
+Remove overhead from the <head> HTML, speed up your website and disable widgets you don't use
 
 == Description ==
 
@@ -23,8 +23,9 @@ Header items you can remove:
 * Remove WP Generator Meta
 * Remove Version Numbers from Style and Script Links
 * Disable WP Emoji / emoticons
-* Disable Canonical URL
 * Disable JSON API
+* Disable Canonical URL
+* Remove WooCommerce Generator Meta
 
 You can disable the following widgets:
 * Archives
@@ -58,6 +59,7 @@ Installing "Remove Wordpress Overhead" can be done either by searching for "Remo
 = 1.1.0 =
 * 2016-10-23
 * ability to remove canonical url from header
+* ability to remove WooCommerce generator tag from header
 * add plugin git URL
 * add "select all" op settings page
 * namespace classes to avoid function name collisions

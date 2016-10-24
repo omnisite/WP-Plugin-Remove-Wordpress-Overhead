@@ -111,7 +111,7 @@ class Remove_Wordpress_Overhead_Settings {
 
 		$settings['standard'] = array(
 			'title'					=> __( 'Settings', 'remove-wordpress-overhead' ),
-			'description'			=> __( 'Check the boxes to remove stuff and keep your HTML and WP clean.', 'remove-wordpress-overhead' ),
+			'description'			=> __( 'Check the boxes to remove stuff and keep your HTML and WP clean and website fast.', 'remove-wordpress-overhead' ),
 			'fields'				=> array(
 				array(
 					'id' 			=> 'remove_rsd_link',
@@ -180,6 +180,13 @@ class Remove_Wordpress_Overhead_Settings {
 					'id' 			=> 'remove_canonical',
 					'label'			=> __( 'Remove Canonical URL <a href="https://support.google.com/webmasters/answer/139066?hl=en"><i class="dashicons dashicons-editor-help"></i></a>', 'remove-wordpress-overhead' ),
 					'description'	=> __( '&lt;link rel="canonical" href="http://www.site.com/some-url" /&gt;', 'remove-wordpress-overhead' ),
+					'type'			=> 'checkbox',
+					'default'		=> ''
+				),
+				array(
+					'id' 			=> 'remove_woo_generator',
+					'label'			=> __( 'Remove WooCommerce Generator Meta', 'remove-wordpress-overhead' ),
+					'description'	=> __( '&lt;meta name="generator" content="WooCommerce x.x.x" /&gt;', 'remove-wordpress-overhead' ),
 					'type'			=> 'checkbox',
 					'default'		=> ''
 				),

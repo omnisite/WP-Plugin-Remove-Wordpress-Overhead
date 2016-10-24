@@ -284,6 +284,7 @@ class Remove_Wordpress_Overhead {
 			$options['emojicons'] = get_option( $this->_base . 'disable_wp_emojicons' );
 			$options['json_api'] = get_option( $this->_base . 'disable_json_api' );
 			$options['canonical'] = get_option( $this->_base . 'remove_canonical' );
+			$options['woo_generator'] = get_option( $this->_base . 'remove_woo_generator' );
 			$options['widgets'] = get_option( $this->_base . 'disable_wp_widgets' );
 			set_transient( $this->_base . 'transient_settings', $options );
 		}
@@ -341,6 +342,11 @@ class Remove_Wordpress_Overhead {
 		if ( isset( $options['canonical'] ) && 'on' == $options['canonical'] ) {
 			remove_action('embed_head', 'rel_canonical');
 			add_filter( 'wpseo_canonical', '__return_false' );
+		}
+
+		// remove woocommerce generator version
+		if ( isset( $options['woo_generator'] ) && 'on' == $options['woo_generator'] ) {
+			remove_action( 'wp_head','wc_generator_tag' );
 		}
 
 		// disable wp widgets
