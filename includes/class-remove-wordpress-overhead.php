@@ -289,62 +289,62 @@ class Remove_Wordpress_Overhead {
 		}
 
 		// remove really simple discovery link
-		if ( $options['rsd_link'] && 'on' == $options['rsd_link'] ) {
+		if ( isset( $options['rsd_link'] ) && 'on' == $options['rsd_link'] ) {
 			remove_action('wp_head', 'rsd_link');
 		}
 
 		// remove wlwmanifest.xml (needed to support windows live writer)
-		if ( $options['wlwmanifest'] && 'on' == $options['wlwmanifest'] ) {
+		if ( isset( $options['wlwmanifest'] ) && 'on' == $options['wlwmanifest'] ) {
 			remove_action('wp_head', 'wlwmanifest_link'); 
 		}
 
 		// remove rss feed and exta feed links (make sure you add them in yourself if you are using as RSS service
-		if ( $options['feed_links'] && 'on' == $options['feed_links'] ) {
+		if ( isset( $options['feed_links'] ) && 'on' == $options['feed_links'] ) {
 			remove_action('wp_head', 'feed_links', 2);
 			remove_action('wp_head', 'feed_links_extra', 3);
 		}
 
 		// remove the next and previous post links
-		if ( $options['next_prev'] && 'on' == $options['next_prev'] ) {
+		if ( isset( $options['next_prev'] ) && 'on' == $options['next_prev'] ) {
 			remove_action('wp_head', 'adjacent_posts_rel_link', 10, 0);
 			remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0 );
 		}
 
 		// remove the shortlink url from header
-		if ( $options['shortlink'] && 'on' == $options['shortlink'] ) {
+		if ( isset( $options['shortlink'] ) && 'on' == $options['shortlink'] ) {
 			remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0 );
 		}
 
 		// remove wordpress generator version
-		if ( $options['wp_generator'] && 'on' == $options['wp_generator'] ) {
+		if ( isset( $options['wp_generator'] ) && 'on' == $options['wp_generator'] ) {
 			add_filter( 'the_generator', array( $this, 'wp_remove_version' ) );
 		}
 
 		// remove ver= after style and script links
-		if ( $options['ver'] && 'on' == $options['ver'] ) {
+		if ( isset( $options['ver'] ) && 'on' == $options['ver'] ) {
 			add_filter( 'style_loader_src', array( $this, 'remove_ver_css_js' ), 9999 );
 			add_filter( 'script_loader_src', array( $this, 'remove_ver_css_js' ), 9999 );
 		}
 
 		// remove emoji styles and script from header
-		if ( $options['emojicons'] && 'on' == $options['emojicons'] ) {
+		if ( isset( $options['emojicons'] ) && 'on' == $options['emojicons'] ) {
 			add_action( 'init', array( $this, 'disable_wp_emojicons' ) );
 		}
 
 		// disable json api and remove link from header
-		if ( $options['json_api'] && 'on' == $options['json_api'] ) {
+		if ( isset( $options['json_api'] ) && 'on' == $options['json_api'] ) {
 			add_action( 'after_setup_theme', array( $this, 'remove_json_api' ) );
 			add_action( 'after_setup_theme', array( $this, 'disable_json_api' ) );
 		}
 
 		// remove canonical link
-		if ( $options['canonical'] && 'on' == $options['canonical'] ) {
+		if ( isset( $options['canonical'] ) && 'on' == $options['canonical'] ) {
 			remove_action('embed_head', 'rel_canonical');
 			add_filter( 'wpseo_canonical', '__return_false' );
 		}
 
 		// disable wp widgets
-		if ( $options['widgets'] && '' != $options['widgets'] && is_array( $options['widgets'] ) ) {
+		if ( isset( $options['widgets'] ) && '' != $options['widgets'] && is_array( $options['widgets'] ) ) {
 			// unregister widgets
 			add_action('widgets_init', array( $this, 'unregister_default_widgets' ), 11);
 		}
