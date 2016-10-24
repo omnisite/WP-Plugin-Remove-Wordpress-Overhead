@@ -1,5 +1,9 @@
-input[type=checkbox] {
+#remove_wordpress_overhead_settings input[type=checkbox] {
 	visibility: hidden;
+}
+
+#remove_wordpress_overhead_settings .form-table a {
+	text-decoration: none;
 }
 
 .remove-wordpress-overhead_slide_selectall {

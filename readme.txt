@@ -22,7 +22,7 @@ Header items you can remove:
 * Remove Shortlink URL
 * Remove WP Generator Meta
 * Remove Version Numbers from Style and Script Links
-* Disable WP Emojicons
+* Disable WP Emoji / emoticons
 * Disable JSON API
 
 You can disable the following widgets:

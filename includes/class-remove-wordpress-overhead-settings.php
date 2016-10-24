@@ -115,42 +115,35 @@ class Remove_Wordpress_Overhead_Settings {
 			'fields'				=> array(
 				array(
 					'id' 			=> 'remove_rsd_link',
-					'label'			=> __( 'Remove RSD Link', 'remove-wordpress-overhead' ),
+					'label'			=> __( 'Remove RSD Link <a href="https://en.wikipedia.org/wiki/Really_Simple_Discovery" target="_blank"><i class="dashicons dashicons-editor-help"></i></a>', 'remove-wordpress-overhead' ),
 					'description'	=> __( '&lt;link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.site.com/xmlrpc.php?rsd" /&gt;', 'remove-wordpress-overhead' ),
 					'type'			=> 'checkbox',
 					'default'		=> ''
 				),
 				array(
 					'id' 			=> 'remove_wlwmanifest_link',
-					'label'			=> __( 'Remove WLW Manifest Link', 'remove-wordpress-overhead' ),
+					'label'			=> __( 'Remove WLW Manifest Link <a href="https://msdn.microsoft.com/en-us/library/bb463265.aspx" target="_blank"><i class="dashicons dashicons-editor-help"></i></a>', 'remove-wordpress-overhead' ),
 					'description'	=> __( '&lt;link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.site.com/wp-includes/wlwmanifest.xml" /&gt;', 'remove-wordpress-overhead' ),
 					'type'			=> 'checkbox',
 					'default'		=> ''
 				),
 				array(
 					'id' 			=> 'remove_rss_feed_links',
-					'label'			=> __( 'Remove RSS Feed Links', 'remove-wordpress-overhead' ),
+					'label'			=> __( 'Remove RSS Feed Links <a href="https://en.wikipedia.org/wiki/RSS" target="_blank"><i class="dashicons dashicons-editor-help"></i></a>', 'remove-wordpress-overhead' ),
 					'description'	=> __( '&lt;link rel="alternate" type="application/rss+xml" title="Site name &raquo; (Comments) Feed" href="http://www.site.com/(comments)/feed" /&gt;', 'remove-wordpress-overhead' ),
 					'type'			=> 'checkbox',
 					'default'		=> ''
 				),
 				array(
 					'id' 			=> 'remove_next_prev_links',
-					'label'			=> __( 'Remove Next &amp; Prev Post Links', 'remove-wordpress-overhead' ),
+					'label'			=> __( 'Remove Next &amp; Prev Post Links <a href="https://support.google.com/webmasters/answer/1663744?hl=en" target="_blank"><i class="dashicons dashicons-editor-help"></i></a>', 'remove-wordpress-overhead' ),
 					'description'	=> __( '&lt;link rel="prev|prev" title="Some Post Title" href="http://www.site.com/some-slug/" /&gt;', 'remove-wordpress-overhead' ),
 					'type'			=> 'checkbox',
 					'default'		=> ''
 				),
 				array(
 					'id' 			=> 'remove_shortlink',
-					'label'			=> __( 'Remove Shortlink URL', 'remove-wordpress-overhead' ),
-					'description'	=> __( '&lt;link rel="shortlink" href="http://www.site.com/some-slug/" /&gt;', 'remove-wordpress-overhead' ),
-					'type'			=> 'checkbox',
-					'default'		=> ''
-				),
-				array(
-					'id' 			=> 'remove_shortlink',
-					'label'			=> __( 'Remove Shortlink URL', 'remove-wordpress-overhead' ),
+					'label'			=> __( 'Remove Shortlink URL <a href="http://microformats.org/wiki/rel-shortlink" target="_blank"><i class="dashicons dashicons-editor-help"></i></a>', 'remove-wordpress-overhead' ),
 					'description'	=> __( '&lt;link rel="shortlink" href="http://www.site.com/some-slug/" /&gt;', 'remove-wordpress-overhead' ),
 					'type'			=> 'checkbox',
 					'default'		=> ''
@@ -171,7 +164,7 @@ class Remove_Wordpress_Overhead_Settings {
 				),
 				array(
 					'id' 			=> 'disable_wp_emojicons',
-					'label'			=> __( 'Disable WP Emojicons', 'remove-wordpress-overhead' ),
+					'label'			=> __( 'Disable WP Emoji <a href="https://en.support.wordpress.com/emoji/" target="_blank"><i class="dashicons dashicons-editor-help"></i></a>', 'remove-wordpress-overhead' ),
 					'description'	=> __( 'Emoji CSS styles and javascript in header', 'remove-wordpress-overhead' ),
 					'type'			=> 'checkbox',
 					'default'		=> ''
@@ -185,8 +178,8 @@ class Remove_Wordpress_Overhead_Settings {
 				),
 				array(
 					'id' 			=> 'disable_wp_widgets',
-					'label'			=> __( 'WP Widgets', 'remove-wordpress-overhead' ),
-					'description'	=> __( '---<br>Check which widgets you want to disable', 'remove-wordpress-overhead' ),
+					'label'			=> __( 'WP Widgets<br><small>Check which widgets you want to disable</small>', 'remove-wordpress-overhead' ),
+					'description'	=> __( 'Check which widgets you want to disable', 'remove-wordpress-overhead' ),
 					'type'			=> 'checkbox_multi',
 					'options'		=> array( 'WP_Widget_Archives' => '1. Archives&nbsp;&nbsp;&nbsp;', 'WP_Widget_Calendar' => '2. Calendar&nbsp;&nbsp;&nbsp;', 'WP_Widget_Categories' => '3. Categories&nbsp;&nbsp;&nbsp;', 'WP_Widget_Links' => '4. Links&nbsp;&nbsp;&nbsp;', 'WP_Widget_Meta' => '5. Meta&nbsp;&nbsp;&nbsp;', 'WP_Nav_Menu_Widget' => '6. Nav Menu&nbsp;&nbsp;&nbsp;', 'WP_Widget_Pages' => '7. Pages&nbsp;&nbsp;&nbsp;', 'WP_Widget_Recent_Comments' => '8. Recent Comments&nbsp;&nbsp;&nbsp;', 'WP_Widget_Recent_Posts' => '9. Recent Posts&nbsp;&nbsp;&nbsp;', 'WP_Widget_RSS' => '10. RSS&nbsp;&nbsp;&nbsp;', 'WP_Widget_Search' => '11. Search&nbsp;&nbsp;&nbsp;', 'WP_Widget_Tag_Cloud' => '12. Tag Cloud&nbsp;&nbsp;&nbsp;', 'WP_Widget_Text' => '13. Text&nbsp;&nbsp;&nbsp;' )
 				),
