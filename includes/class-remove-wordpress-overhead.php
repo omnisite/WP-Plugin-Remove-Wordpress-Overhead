@@ -364,6 +364,7 @@ class Remove_Wordpress_Overhead {
 		remove_filter( 'oembed_dataparse', 'wp_filter_oembed_result', 10 );
 		remove_action( 'wp_head', 'wp_oembed_add_discovery_links' );
 		remove_action( 'wp_head', 'wp_oembed_add_host_js' );
+		remove_action( 'template_redirect', 'rest_output_link_header', 11, 0 );
 	}
 
 	/**
