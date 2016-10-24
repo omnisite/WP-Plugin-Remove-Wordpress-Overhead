@@ -283,6 +283,7 @@ class Remove_Wordpress_Overhead {
 			$options['ver'] = get_option( $this->_base . 'remove_version_numbers_from_style_script' );
 			$options['emojicons'] = get_option( $this->_base . 'disable_wp_emojicons' );
 			$options['json_api'] = get_option( $this->_base . 'disable_json_api' );
+			$options['canonical'] = get_option( $this->_base . 'remove_canonical' );
 			$options['widgets'] = get_option( $this->_base . 'disable_wp_widgets' );
 			set_transient( $this->_base . 'transient_settings', $options );
 		}
@@ -334,6 +335,12 @@ class Remove_Wordpress_Overhead {
 		if ( $options['json_api'] && 'on' == $options['json_api'] ) {
 			add_action( 'after_setup_theme', array( $this, 'remove_json_api' ) );
 			add_action( 'after_setup_theme', array( $this, 'disable_json_api' ) );
+		}
+
+		// remove canonical link
+		if ( $options['canonical'] && 'on' == $options['canonical'] ) {
+			remove_action('embed_head', 'rel_canonical');
+			add_filter( 'wpseo_canonical', '__return_false' );
 		}
 
 		// disable wp widgets

@@ -172,7 +172,14 @@ class Remove_Wordpress_Overhead_Settings {
 				array(
 					'id' 			=> 'disable_json_api',
 					'label'			=> __( 'Disable JSON API', 'remove-wordpress-overhead' ),
-					'description'	=> __( '&lt;link rel="https://api.w.org/" href="http://www.site.com/wp-json/"" /&gt;', 'remove-wordpress-overhead' ),
+					'description'	=> __( '&lt;link rel="https://api.w.org/" href="http://www.site.com/wp-json/" /&gt;', 'remove-wordpress-overhead' ),
+					'type'			=> 'checkbox',
+					'default'		=> ''
+				),
+				array(
+					'id' 			=> 'remove_canonical',
+					'label'			=> __( 'Remove Canonical URL <a href="https://support.google.com/webmasters/answer/139066?hl=en"><i class="dashicons dashicons-editor-help"></i></a>', 'remove-wordpress-overhead' ),
+					'description'	=> __( '&lt;link rel="canonical" href="http://www.site.com/some-url" /&gt;', 'remove-wordpress-overhead' ),
 					'type'			=> 'checkbox',
 					'default'		=> ''
 				),
