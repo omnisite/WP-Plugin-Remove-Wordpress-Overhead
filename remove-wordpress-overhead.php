@@ -38,7 +38,7 @@ require_once( 'includes/lib/class-remove-wordpress-overhead-taxonomy.php' );
  * @return object Remove_Wordpress_Overhead
  */
 function Remove_Wordpress_Overhead () {
-	$instance = Remove_Wordpress_Overhead::instance( __FILE__, '1.0.0', 'rwo_' );
+	$instance = Remove_Wordpress_Overhead::instance( __FILE__, '1.1.0', 'rwo_' );
 
 	if ( is_null( $instance->settings ) ) {
 		$instance->settings = Remove_Wordpress_Overhead_Settings::instance( $instance );
