@@ -103,8 +103,8 @@ class Remove_Wordpress_Overhead_Post_Type {
 			'capability_type' => 'post',
 			'has_archive' => true,
 			'hierarchical' => true,
-			'show_in_rest'       	=> true,
-	  		'rest_base'          	=> $this->post_type,
+			'show_in_rest'	   	=> true,
+	  		'rest_base'		  	=> $this->post_type,
 	  		'rest_controller_class' => 'WP_REST_Posts_Controller',
 			'supports' => array( 'title', 'editor', 'excerpt', 'comments', 'thumbnail' ),
 			'menu_position' => 5,
@@ -119,23 +119,23 @@ class Remove_Wordpress_Overhead_Post_Type {
 	/**
 	 * Set up admin messages for post type
 	 * @param  array $messages Default message
-	 * @return array           Modified messages
+	 * @return array		   Modified messages
 	 */
 	public function updated_messages ( $messages = array() ) {
 	  global $post, $post_ID;
 
 	  $messages[ $this->post_type ] = array(
-	    0 => '',
-	    1 => sprintf( __( '%1$s updated. %2$sView %3$s%4$s.' , 'remove-wordpress-overhead' ), $this->single, '<a href="' . esc_url( get_permalink( $post_ID ) ) . '">', $this->single, '</a>' ),
-	    2 => __( 'Custom field updated.' , 'remove-wordpress-overhead' ),
-	    3 => __( 'Custom field deleted.' , 'remove-wordpress-overhead' ),
-	    4 => sprintf( __( '%1$s updated.' , 'remove-wordpress-overhead' ), $this->single ),
-	    5 => isset( $_GET['revision'] ) ? sprintf( __( '%1$s restored to revision from %2$s.' , 'remove-wordpress-overhead' ), $this->single, wp_post_revision_title( (int) $_GET['revision'], false ) ) : false,
-	    6 => sprintf( __( '%1$s published. %2$sView %3$s%4s.' , 'remove-wordpress-overhead' ), $this->single, '<a href="' . esc_url( get_permalink( $post_ID ) ) . '">', $this->single, '</a>' ),
-	    7 => sprintf( __( '%1$s saved.' , 'remove-wordpress-overhead' ), $this->single ),
-	    8 => sprintf( __( '%1$s submitted. %2$sPreview post%3$s%4$s.' , 'remove-wordpress-overhead' ), $this->single, '<a target="_blank" href="' . esc_url( add_query_arg( 'preview', 'true', get_permalink( $post_ID ) ) ) . '">', $this->single, '</a>' ),
-	    9 => sprintf( __( '%1$s scheduled for: %2$s. %3$sPreview %4$s%5$s.' , 'remove-wordpress-overhead' ), $this->single, '<strong>' . date_i18n( __( 'M j, Y @ G:i' , 'remove-wordpress-overhead' ), strtotime( $post->post_date ) ) . '</strong>', '<a target="_blank" href="' . esc_url( get_permalink( $post_ID ) ) . '">', $this->single, '</a>' ),
-	    10 => sprintf( __( '%1$s draft updated. %2$sPreview %3$s%4$s.' , 'remove-wordpress-overhead' ), $this->single, '<a target="_blank" href="' . esc_url( add_query_arg( 'preview', 'true', get_permalink( $post_ID ) ) ) . '">', $this->single, '</a>' ),
+		0 => '',
+		1 => sprintf( __( '%1$s updated. %2$sView %3$s%4$s.' , 'remove-wordpress-overhead' ), $this->single, '<a href="' . esc_url( get_permalink( $post_ID ) ) . '">', $this->single, '</a>' ),
+		2 => __( 'Custom field updated.' , 'remove-wordpress-overhead' ),
+		3 => __( 'Custom field deleted.' , 'remove-wordpress-overhead' ),
+		4 => sprintf( __( '%1$s updated.' , 'remove-wordpress-overhead' ), $this->single ),
+		5 => isset( $_GET['revision'] ) ? sprintf( __( '%1$s restored to revision from %2$s.' , 'remove-wordpress-overhead' ), $this->single, wp_post_revision_title( (int) $_GET['revision'], false ) ) : false,
+		6 => sprintf( __( '%1$s published. %2$sView %3$s%4s.' , 'remove-wordpress-overhead' ), $this->single, '<a href="' . esc_url( get_permalink( $post_ID ) ) . '">', $this->single, '</a>' ),
+		7 => sprintf( __( '%1$s saved.' , 'remove-wordpress-overhead' ), $this->single ),
+		8 => sprintf( __( '%1$s submitted. %2$sPreview post%3$s%4$s.' , 'remove-wordpress-overhead' ), $this->single, '<a target="_blank" href="' . esc_url( add_query_arg( 'preview', 'true', get_permalink( $post_ID ) ) ) . '">', $this->single, '</a>' ),
+		9 => sprintf( __( '%1$s scheduled for: %2$s. %3$sPreview %4$s%5$s.' , 'remove-wordpress-overhead' ), $this->single, '<strong>' . date_i18n( __( 'M j, Y @ G:i' , 'remove-wordpress-overhead' ), strtotime( $post->post_date ) ) . '</strong>', '<a target="_blank" href="' . esc_url( get_permalink( $post_ID ) ) . '">', $this->single, '</a>' ),
+		10 => sprintf( __( '%1$s draft updated. %2$sPreview %3$s%4$s.' , 'remove-wordpress-overhead' ), $this->single, '<a target="_blank" href="' . esc_url( add_query_arg( 'preview', 'true', get_permalink( $post_ID ) ) ) . '">', $this->single, '</a>' ),
 	  );
 
 	  return $messages;
@@ -145,19 +145,19 @@ class Remove_Wordpress_Overhead_Post_Type {
 	 * Set up bulk admin messages for post type
 	 * @param  array  $bulk_messages Default bulk messages
 	 * @param  array  $bulk_counts   Counts of selected posts in each status
-	 * @return array                Modified messages
+	 * @return array				Modified messages
 	 */
 	public function bulk_updated_messages ( $bulk_messages = array(), $bulk_counts = array() ) {
 
 		$bulk_messages[ $this->post_type ] = array(
-	        'updated'   => sprintf( _n( '%1$s %2$s updated.', '%1$s %3$s updated.', $bulk_counts['updated'], 'remove-wordpress-overhead' ), $bulk_counts['updated'], $this->single, $this->plural ),
-	        'locked'    => sprintf( _n( '%1$s %2$s not updated, somebody is editing it.', '%1$s %3$s not updated, somebody is editing them.', $bulk_counts['locked'], 'remove-wordpress-overhead' ), $bulk_counts['locked'], $this->single, $this->plural ),
-	        'deleted'   => sprintf( _n( '%1$s %2$s permanently deleted.', '%1$s %3$s permanently deleted.', $bulk_counts['deleted'], 'remove-wordpress-overhead' ), $bulk_counts['deleted'], $this->single, $this->plural ),
-	        'trashed'   => sprintf( _n( '%1$s %2$s moved to the Trash.', '%1$s %3$s moved to the Trash.', $bulk_counts['trashed'], 'remove-wordpress-overhead' ), $bulk_counts['trashed'], $this->single, $this->plural ),
-	        'untrashed' => sprintf( _n( '%1$s %2$s restored from the Trash.', '%1$s %3$s restored from the Trash.', $bulk_counts['untrashed'], 'remove-wordpress-overhead' ), $bulk_counts['untrashed'], $this->single, $this->plural ),
-	    );
+			'updated'   => sprintf( _n( '%1$s %2$s updated.', '%1$s %3$s updated.', $bulk_counts['updated'], 'remove-wordpress-overhead' ), $bulk_counts['updated'], $this->single, $this->plural ),
+			'locked'	=> sprintf( _n( '%1$s %2$s not updated, somebody is editing it.', '%1$s %3$s not updated, somebody is editing them.', $bulk_counts['locked'], 'remove-wordpress-overhead' ), $bulk_counts['locked'], $this->single, $this->plural ),
+			'deleted'   => sprintf( _n( '%1$s %2$s permanently deleted.', '%1$s %3$s permanently deleted.', $bulk_counts['deleted'], 'remove-wordpress-overhead' ), $bulk_counts['deleted'], $this->single, $this->plural ),
+			'trashed'   => sprintf( _n( '%1$s %2$s moved to the Trash.', '%1$s %3$s moved to the Trash.', $bulk_counts['trashed'], 'remove-wordpress-overhead' ), $bulk_counts['trashed'], $this->single, $this->plural ),
+			'untrashed' => sprintf( _n( '%1$s %2$s restored from the Trash.', '%1$s %3$s restored from the Trash.', $bulk_counts['untrashed'], 'remove-wordpress-overhead' ), $bulk_counts['untrashed'], $this->single, $this->plural ),
+		);
 
-	    return $bulk_messages;
+		return $bulk_messages;
 	}
 
 }

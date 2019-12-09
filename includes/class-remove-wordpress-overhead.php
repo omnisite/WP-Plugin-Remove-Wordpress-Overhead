@@ -16,7 +16,7 @@ class Remove_Wordpress_Overhead {
 
 	/**
 	 * Settings class object
-	 * @var     object
+	 * @var	 object
 	 * @access  public
 	 * @since   1.0.0
 	 */
@@ -24,7 +24,7 @@ class Remove_Wordpress_Overhead {
 
 	/**
 	 * The version number.
-	 * @var     string
+	 * @var	 string
 	 * @access  public
 	 * @since   1.0.0
 	 */
@@ -32,7 +32,7 @@ class Remove_Wordpress_Overhead {
 
 	/**
 	 * The base prefix.
-	 * @var     string
+	 * @var	 string
 	 * @access  public
 	 * @since   1.0.0
 	 */
@@ -40,7 +40,7 @@ class Remove_Wordpress_Overhead {
 
 	/**
 	 * The token.
-	 * @var     string
+	 * @var	 string
 	 * @access  public
 	 * @since   1.0.0
 	 */
@@ -48,7 +48,7 @@ class Remove_Wordpress_Overhead {
 
 	/**
 	 * The main plugin file.
-	 * @var     string
+	 * @var	 string
 	 * @access  public
 	 * @since   1.0.0
 	 */
@@ -56,7 +56,7 @@ class Remove_Wordpress_Overhead {
 
 	/**
 	 * The main plugin directory.
-	 * @var     string
+	 * @var	 string
 	 * @access  public
 	 * @since   1.0.0
 	 */
@@ -64,7 +64,7 @@ class Remove_Wordpress_Overhead {
 
 	/**
 	 * The plugin assets directory.
-	 * @var     string
+	 * @var	 string
 	 * @access  public
 	 * @since   1.0.0
 	 */
@@ -72,7 +72,7 @@ class Remove_Wordpress_Overhead {
 
 	/**
 	 * The plugin assets URL.
-	 * @var     string
+	 * @var	 string
 	 * @access  public
 	 * @since   1.0.0
 	 */
@@ -80,7 +80,7 @@ class Remove_Wordpress_Overhead {
 
 	/**
 	 * Suffix for Javascripts.
-	 * @var     string
+	 * @var	 string
 	 * @access  public
 	 * @since   1.0.0
 	 */
@@ -131,10 +131,10 @@ class Remove_Wordpress_Overhead {
 	/**
 	 * Wrapper function to register a new post type
 	 * @param  string $post_type   Post type name
-	 * @param  string $plural      Post type item plural name
-	 * @param  string $single      Post type item single name
+	 * @param  string $plural	  Post type item plural name
+	 * @param  string $single	  Post type item single name
 	 * @param  string $description Description of post type
-	 * @return object              Post type class object
+	 * @return object			  Post type class object
 	 */
 	public function register_post_type ( $post_type = '', $plural = '', $single = '', $description = '', $options = array() ) {
 
@@ -148,10 +148,10 @@ class Remove_Wordpress_Overhead {
 	/**
 	 * Wrapper function to register a new taxonomy
 	 * @param  string $taxonomy   Taxonomy name
-	 * @param  string $plural     Taxonomy single name
-	 * @param  string $single     Taxonomy plural name
+	 * @param  string $plural	 Taxonomy single name
+	 * @param  string $single	 Taxonomy plural name
 	 * @param  array  $post_types Post types to which this taxonomy applies
-	 * @return object             Taxonomy class object
+	 * @return object			 Taxonomy class object
 	 */
 	public function register_taxonomy ( $taxonomy = '', $plural = '', $single = '', $post_types = array(), $taxonomy_args = array() ) {
 
@@ -201,12 +201,12 @@ class Remove_Wordpress_Overhead {
 	 * @return  void
 	 */
 	public function load_plugin_textdomain () {
-	    $domain = 'remove-wordpress-overhead';
+		$domain = 'remove-wordpress-overhead';
 
-	    $locale = apply_filters( 'plugin_locale', get_locale(), $domain );
+		$locale = apply_filters( 'plugin_locale', get_locale(), $domain );
 
-	    load_textdomain( $domain, WP_LANG_DIR . '/' . $domain . '/' . $domain . '-' . $locale . '.mo' );
-	    load_plugin_textdomain( $domain, false, dirname( plugin_basename( $this->file ) ) . '/lang/' );
+		load_textdomain( $domain, WP_LANG_DIR . '/' . $domain . '/' . $domain . '-' . $locale . '.mo' );
+		load_plugin_textdomain( $domain, false, dirname( plugin_basename( $this->file ) ) . '/lang/' );
 	} // End load_plugin_textdomain ()
 
 	/**
@@ -266,9 +266,9 @@ class Remove_Wordpress_Overhead {
 
 	/**
 	 * Do the removing of stuff
-	 * @access    private
-	 * @since     1.0.0
-	 * @return    void
+	 * @access	private
+	 * @since	 1.0.0
+	 * @return	void
 	 */
 	private function removeStuff() {
 		$options = array();
@@ -296,7 +296,7 @@ class Remove_Wordpress_Overhead {
 
 		// remove wlwmanifest.xml (needed to support windows live writer)
 		if ( isset( $options['wlwmanifest'] ) && 'on' == $options['wlwmanifest'] ) {
-			remove_action('wp_head', 'wlwmanifest_link'); 
+			remove_action('wp_head', 'wlwmanifest_link');
 		}
 
 		// remove rss feed and exta feed links (make sure you add them in yourself if you are using as RSS service
@@ -358,9 +358,9 @@ class Remove_Wordpress_Overhead {
 
 	/**
 	 * Remove JSON API links from header
-	 * @access    public
-	 * @since     1.0.0
-	 * @return    void
+	 * @access	public
+	 * @since	 1.0.0
+	 * @return	void
 	 */
 	public function remove_json_api () {
 		remove_action( 'wp_head', 'rest_output_link_wp_head', 10 );
@@ -375,9 +375,9 @@ class Remove_Wordpress_Overhead {
 
 	/**
 	 * Disable JSON API
-	 * @access    public
-	 * @since     1.0.0
-	 * @return    void
+	 * @access	public
+	 * @since	 1.0.0
+	 * @return	void
 	 */
 	public function disable_json_api () {
 		add_filter('json_enabled', '__return_false');
@@ -388,9 +388,9 @@ class Remove_Wordpress_Overhead {
 
 	/**
 	 * Unregister WP Widgets
-	 * @access    public
-	 * @since     1.0.0
-	 * @return    void
+	 * @access	public
+	 * @since	 1.0.0
+	 * @return	void
 	 */
 	public function unregister_default_widgets() {
 		$options['widgets'] = get_option( $this->_base . 'disable_wp_widgets' );
@@ -401,9 +401,9 @@ class Remove_Wordpress_Overhead {
 
 	/**
 	 * Delete settings transient on save options page
-	 * @access    public
-	 * @since     1.0.0
-	 * @return    void
+	 * @access	public
+	 * @since	 1.0.0
+	 * @return	void
 	 */
 	public function deleteTransients() {
 		if( isset( $_GET['settings-updated'] ) && $_GET['settings-updated'] ) {
@@ -413,9 +413,9 @@ class Remove_Wordpress_Overhead {
 
 	/**
 	 * Remove WP generator link
-	 * @access    public
-	 * @since     1.1.0
-	 * @return    void
+	 * @access	public
+	 * @since	 1.1.0
+	 * @return	void
 	 */
 	public function wp_remove_version() {
 		return '';
@@ -423,9 +423,9 @@ class Remove_Wordpress_Overhead {
 
 	/**
 	 * Remove version numbers at the end of css and js files
-	 * @access    public
-	 * @since     1.1.0
-	 * @return    void
+	 * @access	public
+	 * @since	 1.1.0
+	 * @return	void
 	 */
 	public function remove_ver_css_js( $src ) {
 		if ( strpos( $src, 'ver=' ) ) {
@@ -436,9 +436,9 @@ class Remove_Wordpress_Overhead {
 
 	/**
 	 * Disable WP emojicons
-	 * @access    public
-	 * @since     1.1.0
-	 * @return    void
+	 * @access	public
+	 * @since	 1.1.0
+	 * @return	void
 	 */
 	public function disable_wp_emojicons() {
 		remove_action( 'admin_print_styles', 'print_emoji_styles' );
@@ -453,9 +453,9 @@ class Remove_Wordpress_Overhead {
 
 	/**
 	 * Disable WP emojicons from TinyMCE
-	 * @access    public
-	 * @since     1.1.0
-	 * @return    void
+	 * @access	public
+	 * @since	 1.1.0
+	 * @return	void
 	 */
 	public function disable_emojicons_tinymce( $plugins ) {
 		if ( is_array( $plugins ) ) {

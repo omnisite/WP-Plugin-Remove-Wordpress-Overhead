@@ -70,48 +70,48 @@ class Remove_Wordpress_Overhead_Taxonomy {
 	 */
 	public function register_taxonomy () {
 
-        $labels = array(
-            'name' => $this->plural,
-            'singular_name' => $this->single,
-            'menu_name' => $this->plural,
-            'all_items' => sprintf( __( 'All %s' , 'remove-wordpress-overhead' ), $this->plural ),
-            'edit_item' => sprintf( __( 'Edit %s' , 'remove-wordpress-overhead' ), $this->single ),
-            'view_item' => sprintf( __( 'View %s' , 'remove-wordpress-overhead' ), $this->single ),
-            'update_item' => sprintf( __( 'Update %s' , 'remove-wordpress-overhead' ), $this->single ),
-            'add_new_item' => sprintf( __( 'Add New %s' , 'remove-wordpress-overhead' ), $this->single ),
-            'new_item_name' => sprintf( __( 'New %s Name' , 'remove-wordpress-overhead' ), $this->single ),
-            'parent_item' => sprintf( __( 'Parent %s' , 'remove-wordpress-overhead' ), $this->single ),
-            'parent_item_colon' => sprintf( __( 'Parent %s:' , 'remove-wordpress-overhead' ), $this->single ),
-            'search_items' =>  sprintf( __( 'Search %s' , 'remove-wordpress-overhead' ), $this->plural ),
-            'popular_items' =>  sprintf( __( 'Popular %s' , 'remove-wordpress-overhead' ), $this->plural ),
-            'separate_items_with_commas' =>  sprintf( __( 'Separate %s with commas' , 'remove-wordpress-overhead' ), $this->plural ),
-            'add_or_remove_items' =>  sprintf( __( 'Add or remove %s' , 'remove-wordpress-overhead' ), $this->plural ),
-            'choose_from_most_used' =>  sprintf( __( 'Choose from the most used %s' , 'remove-wordpress-overhead' ), $this->plural ),
-            'not_found' =>  sprintf( __( 'No %s found' , 'remove-wordpress-overhead' ), $this->plural ),
-        );
+		$labels = array(
+			'name' => $this->plural,
+			'singular_name' => $this->single,
+			'menu_name' => $this->plural,
+			'all_items' => sprintf( __( 'All %s' , 'remove-wordpress-overhead' ), $this->plural ),
+			'edit_item' => sprintf( __( 'Edit %s' , 'remove-wordpress-overhead' ), $this->single ),
+			'view_item' => sprintf( __( 'View %s' , 'remove-wordpress-overhead' ), $this->single ),
+			'update_item' => sprintf( __( 'Update %s' , 'remove-wordpress-overhead' ), $this->single ),
+			'add_new_item' => sprintf( __( 'Add New %s' , 'remove-wordpress-overhead' ), $this->single ),
+			'new_item_name' => sprintf( __( 'New %s Name' , 'remove-wordpress-overhead' ), $this->single ),
+			'parent_item' => sprintf( __( 'Parent %s' , 'remove-wordpress-overhead' ), $this->single ),
+			'parent_item_colon' => sprintf( __( 'Parent %s:' , 'remove-wordpress-overhead' ), $this->single ),
+			'search_items' =>  sprintf( __( 'Search %s' , 'remove-wordpress-overhead' ), $this->plural ),
+			'popular_items' =>  sprintf( __( 'Popular %s' , 'remove-wordpress-overhead' ), $this->plural ),
+			'separate_items_with_commas' =>  sprintf( __( 'Separate %s with commas' , 'remove-wordpress-overhead' ), $this->plural ),
+			'add_or_remove_items' =>  sprintf( __( 'Add or remove %s' , 'remove-wordpress-overhead' ), $this->plural ),
+			'choose_from_most_used' =>  sprintf( __( 'Choose from the most used %s' , 'remove-wordpress-overhead' ), $this->plural ),
+			'not_found' =>  sprintf( __( 'No %s found' , 'remove-wordpress-overhead' ), $this->plural ),
+		);
 
-        $args = array(
-        	'label' => $this->plural,
-        	'labels' => apply_filters( $this->taxonomy . '_labels', $labels ),
-        	'hierarchical' => true,
-            'public' => true,
-            'show_ui' => true,
-            'show_in_nav_menus' => true,
-            'show_tagcloud' => true,
-            'meta_box_cb' => null,
-            'show_admin_column' => true,
-            'update_count_callback' => '',
-            'show_in_rest'          => true,
-            'rest_base'             => $this->taxonomy,
-            'rest_controller_class' => 'WP_REST_Terms_Controller',
-            'query_var' => $this->taxonomy,
-            'rewrite' => true,
-            'sort' => '',
-        );
+		$args = array(
+			'label' => $this->plural,
+			'labels' => apply_filters( $this->taxonomy . '_labels', $labels ),
+			'hierarchical' => true,
+			'public' => true,
+			'show_ui' => true,
+			'show_in_nav_menus' => true,
+			'show_tagcloud' => true,
+			'meta_box_cb' => null,
+			'show_admin_column' => true,
+			'update_count_callback' => '',
+			'show_in_rest'		  => true,
+			'rest_base'			 => $this->taxonomy,
+			'rest_controller_class' => 'WP_REST_Terms_Controller',
+			'query_var' => $this->taxonomy,
+			'rewrite' => true,
+			'sort' => '',
+		);
 
-        $args = array_merge($args, $this->taxonomy_args);
+		$args = array_merge($args, $this->taxonomy_args);
 
-        register_taxonomy( $this->taxonomy, $this->post_types, apply_filters( $this->taxonomy . '_register_args', $args, $this->taxonomy, $this->post_types ) );
-    }
+		register_taxonomy( $this->taxonomy, $this->post_types, apply_filters( $this->taxonomy . '_register_args', $args, $this->taxonomy, $this->post_types ) );
+	}
 
 }

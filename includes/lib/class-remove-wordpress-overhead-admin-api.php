@@ -164,10 +164,10 @@ class Remove_Wordpress_Overhead_Admin_API {
 
 			case 'color':
 				?><div class="color-picker" style="position:relative;">
-			        <input type="text" name="<?php esc_attr_e( $option_name ); ?>" class="color" value="<?php esc_attr_e( $data ); ?>" />
-			        <div style="position:absolute;background:#FFF;z-index:99;border-radius:100%;" class="colorpicker"></div>
-			    </div>
-			    <?php
+					<input type="text" name="<?php esc_attr_e( $option_name ); ?>" class="color" value="<?php esc_attr_e( $data ); ?>" />
+					<div style="position:absolute;background:#FFF;z-index:99;border-radius:100%;" class="colorpicker"></div>
+				</div>
+				<?php
 			break;
 
 		}
@@ -205,7 +205,7 @@ class Remove_Wordpress_Overhead_Admin_API {
 	 * Validate form field
 	 * @param  string $data Submitted value
 	 * @param  string $type Type of field to validate
-	 * @return string       Validated value
+	 * @return string	   Validated value
 	 */
 	public function validate_field ( $data = '', $type = 'text' ) {
 
@@ -220,11 +220,11 @@ class Remove_Wordpress_Overhead_Admin_API {
 
 	/**
 	 * Add meta box to the dashboard
-	 * @param string $id            Unique ID for metabox
-	 * @param string $title         Display title of metabox
-	 * @param array  $post_types    Post types to which this metabox applies
-	 * @param string $context       Context in which to display this metabox ('advanced' or 'side')
-	 * @param string $priority      Priority of this metabox ('default', 'low' or 'high')
+	 * @param string $id			Unique ID for metabox
+	 * @param string $title		 Display title of metabox
+	 * @param array  $post_types	Post types to which this metabox applies
+	 * @param string $context	   Context in which to display this metabox ('advanced' or 'side')
+	 * @param string $priority	  Priority of this metabox ('default', 'low' or 'high')
 	 * @param array  $callback_args Any axtra arguments that will be passed to the display function for this metabox
 	 * @return void
 	 */

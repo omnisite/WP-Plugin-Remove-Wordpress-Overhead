@@ -24,7 +24,7 @@ class Remove_Wordpress_Overhead_Settings {
 
 	/**
 	 * Prefix for plugin settings.
-	 * @var     string
+	 * @var	 string
 	 * @access  public
 	 * @since   1.0.0
 	 */
@@ -32,7 +32,7 @@ class Remove_Wordpress_Overhead_Settings {
 
 	/**
 	 * Available settings for plugin.
-	 * @var     array
+	 * @var	 array
 	 * @access  public
 	 * @since   1.0.0
 	 */
@@ -79,12 +79,8 @@ class Remove_Wordpress_Overhead_Settings {
 	 */
 	public function settings_assets () {
 
-    	// We're including the WP media scripts here because they're needed for the image upload field
-    	// If you're not including an image upload then you can leave this function call out
-    	wp_enqueue_media();
-
-    	wp_register_script( $this->parent->_token . '-settings-js', $this->parent->assets_url . 'js/settings' . $this->parent->script_suffix . '.js', array( 'jquery' ), '1.0.0' );
-    	wp_enqueue_script( $this->parent->_token . '-settings-js' );
+		wp_register_script( $this->parent->_token . '-settings-js', $this->parent->assets_url . 'js/settings' . $this->parent->script_suffix . '.js', array( 'jquery' ), '1.0.0' );
+		wp_enqueue_script( $this->parent->_token . '-settings-js' );
 	}
 
 	/**
