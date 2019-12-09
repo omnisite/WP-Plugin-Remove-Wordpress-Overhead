@@ -129,40 +129,6 @@ class Remove_Wordpress_Overhead {
 	} // End __construct ()
 
 	/**
-	 * Wrapper function to register a new post type
-	 * @param  string $post_type   Post type name
-	 * @param  string $plural	  Post type item plural name
-	 * @param  string $single	  Post type item single name
-	 * @param  string $description Description of post type
-	 * @return object			  Post type class object
-	 */
-	public function register_post_type ( $post_type = '', $plural = '', $single = '', $description = '', $options = array() ) {
-
-		if ( ! $post_type || ! $plural || ! $single ) return;
-
-		$post_type = new Remove_Wordpress_Overhead_Post_Type( $post_type, $plural, $single, $description, $options );
-
-		return $post_type;
-	}
-
-	/**
-	 * Wrapper function to register a new taxonomy
-	 * @param  string $taxonomy   Taxonomy name
-	 * @param  string $plural	 Taxonomy single name
-	 * @param  string $single	 Taxonomy plural name
-	 * @param  array  $post_types Post types to which this taxonomy applies
-	 * @return object			 Taxonomy class object
-	 */
-	public function register_taxonomy ( $taxonomy = '', $plural = '', $single = '', $post_types = array(), $taxonomy_args = array() ) {
-
-		if ( ! $taxonomy || ! $plural || ! $single ) return;
-
-		$taxonomy = new Remove_Wordpress_Overhead_Taxonomy( $taxonomy, $plural, $single, $post_types, $taxonomy_args );
-
-		return $taxonomy;
-	}
-
-	/**
 	 * Load admin CSS.
 	 * @access  public
 	 * @since   1.0.0

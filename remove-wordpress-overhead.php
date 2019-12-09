@@ -28,8 +28,6 @@ require_once( 'includes/class-remove-wordpress-overhead-settings.php' );
 
 // Load plugin libraries
 require_once( 'includes/lib/class-remove-wordpress-overhead-admin-api.php' );
-require_once( 'includes/lib/class-remove-wordpress-overhead-post-type.php' );
-require_once( 'includes/lib/class-remove-wordpress-overhead-taxonomy.php' );
 
 /**
  * Returns the main instance of Remove_Wordpress_Overhead to prevent the need to use globals.
