@@ -151,25 +151,6 @@ class Remove_Wordpress_Overhead_Admin_API {
 				$html .= '</select> ';
 			break;
 
-			case 'image':
-				$image_thumb = '';
-				if ( $data ) {
-					$image_thumb = wp_get_attachment_thumb_url( $data );
-				}
-				$html .= '<img id="' . $option_name . '_preview" class="image_preview" src="' . $image_thumb . '" /><br/>' . "\n";
-				$html .= '<input id="' . $option_name . '_button" type="button" data-uploader_title="' . __( 'Upload an image' , 'remove-wordpress-overhead' ) . '" data-uploader_button_text="' . __( 'Use image' , 'remove-wordpress-overhead' ) . '" class="image_upload_button button" value="'. __( 'Upload new image' , 'remove-wordpress-overhead' ) . '" />' . "\n";
-				$html .= '<input id="' . $option_name . '_delete" type="button" class="image_delete_button button" value="'. __( 'Remove image' , 'remove-wordpress-overhead' ) . '" />' . "\n";
-				$html .= '<input id="' . $option_name . '" class="image_data_field" type="hidden" name="' . $option_name . '" value="' . $data . '"/><br/>' . "\n";
-			break;
-
-			case 'color':
-				?><div class="color-picker" style="position:relative;">
-					<input type="text" name="<?php esc_attr_e( $option_name ); ?>" class="color" value="<?php esc_attr_e( $data ); ?>" />
-					<div style="position:absolute;background:#FFF;z-index:99;border-radius:100%;" class="colorpicker"></div>
-				</div>
-				<?php
-			break;
-
 		}
 
 		switch( $field['type'] ) {

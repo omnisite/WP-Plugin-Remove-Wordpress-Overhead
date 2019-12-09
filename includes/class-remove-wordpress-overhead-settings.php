@@ -74,16 +74,6 @@ class Remove_Wordpress_Overhead_Settings {
 	}
 
 	/**
-	 * Load settings JS & CSS
-	 * @return void
-	 */
-	public function settings_assets () {
-
-		wp_register_script( $this->parent->_token . '-settings-js', $this->parent->assets_url . 'js/settings' . $this->parent->script_suffix . '.js', array( 'jquery' ), '1.0.0' );
-		wp_enqueue_script( $this->parent->_token . '-settings-js' );
-	}
-
-	/**
 	 * Add settings link to plugin list table
 	 * @param  array $links Existing links
 	 * @return array 		Modified links
