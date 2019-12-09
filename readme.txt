@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: wordpress, header, remove widgets, disable widgets, remove, clean, strip, version, disable, rsd link, wp generator, feed link, rss feed, shortlink, next, prev, wp generator, version number, wlwmanifest, emojicons, json api
 Requires at least: 3.9
 Tested up to: 4.6
-Stable tag: 1.1.0
+Stable tag: 1.3.0
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -19,7 +19,7 @@ Header items you can remove:
 * Remove WLW Manifest Link
 * Remove RSS Feed Links
 * Remove Next & Prev Post Links
-* Remove Shortlink URL
+* Remove Shortlink URL (also from http headers)
 * Remove WP Generator Meta
 * Remove Version Numbers from Style and Script Links
 * Disable WP Emoji / emoticons
@@ -55,6 +55,17 @@ Installing "Remove Wordpress Overhead" can be done either by searching for "Remo
 1. screenshot-1: settings screen
 
 == Changelog ==
+
+= 1.3.0 =
+* 2019-12-09
+* contribution by Bill https://github.com/lefooey :
+* If short links are turned off, this also removes the short link that
+* Wordpress puts in the HTTP headers
+* Thanks Bill. Sorry for the 2 year delay in merging :-)
+
+= 1.2.0 =
+* 2019-12-09
+* general code clean up
 
 = 1.1.0 =
 * 2016-10-23
