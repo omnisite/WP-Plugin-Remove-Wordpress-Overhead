@@ -291,29 +291,29 @@ class Remove_Wordpress_Overhead {
 
 		// remove really simple discovery link
 		if ( isset( $options['rsd_link'] ) && 'on' == $options['rsd_link'] ) {
-			remove_action('wp_head', 'rsd_link');
+			remove_action( 'wp_head', 'rsd_link' );
 		}
 
 		// remove wlwmanifest.xml (needed to support windows live writer)
 		if ( isset( $options['wlwmanifest'] ) && 'on' == $options['wlwmanifest'] ) {
-			remove_action('wp_head', 'wlwmanifest_link');
+			remove_action( 'wp_head', 'wlwmanifest_link' );
 		}
 
 		// remove rss feed and exta feed links (make sure you add them in yourself if you are using as RSS service
 		if ( isset( $options['feed_links'] ) && 'on' == $options['feed_links'] ) {
-			remove_action('wp_head', 'feed_links', 2);
-			remove_action('wp_head', 'feed_links_extra', 3);
+			remove_action( 'wp_head', 'feed_links', 2 );
+			remove_action( 'wp_head', 'feed_links_extra', 3 );
 		}
 
 		// remove the next and previous post links
 		if ( isset( $options['next_prev'] ) && 'on' == $options['next_prev'] ) {
-			remove_action('wp_head', 'adjacent_posts_rel_link', 10, 0);
-			remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0 );
+			remove_action( 'wp_head', 'adjacent_posts_rel_link', 10, 0 );
+			remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0 );
 		}
 
 		// remove the shortlink url from header
 		if ( isset( $options['shortlink'] ) && 'on' == $options['shortlink'] ) {
-			remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0 );
+			remove_action( 'wp_head', 'wp_shortlink_wp_head', 10, 0 );
 		}
 
 		// remove wordpress generator version
@@ -340,7 +340,7 @@ class Remove_Wordpress_Overhead {
 
 		// remove canonical link
 		if ( isset( $options['canonical'] ) && 'on' == $options['canonical'] ) {
-			remove_action('embed_head', 'rel_canonical');
+			remove_action( 'embed_head', 'rel_canonical' );
 			add_filter( 'wpseo_canonical', '__return_false' );
 		}
 
@@ -352,7 +352,7 @@ class Remove_Wordpress_Overhead {
 		// disable wp widgets
 		if ( isset( $options['widgets'] ) && '' != $options['widgets'] && is_array( $options['widgets'] ) ) {
 			// unregister widgets
-			add_action('widgets_init', array( $this, 'unregister_default_widgets' ), 11);
+			add_action( 'widgets_init', array( $this, 'unregister_default_widgets' ), 11 );
 		}
 	}
 
@@ -380,10 +380,10 @@ class Remove_Wordpress_Overhead {
 	 * @return	void
 	 */
 	public function disable_json_api () {
-		add_filter('json_enabled', '__return_false');
-		add_filter('json_jsonp_enabled', '__return_false');
-		add_filter('rest_enabled', '__return_false');
-		add_filter('rest_jsonp_enabled', '__return_false');
+		add_filter( 'json_enabled', '__return_false' );
+		add_filter( 'json_jsonp_enabled', '__return_false' );
+		add_filter( 'rest_enabled', '__return_false' );
+		add_filter( 'rest_jsonp_enabled', '__return_false' );
 	}
 
 	/**

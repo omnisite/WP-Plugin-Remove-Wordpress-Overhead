@@ -61,7 +61,7 @@ class Remove_Wordpress_Overhead_Taxonomy {
 		$this->taxonomy_args = $tax_args;
 
 		// Register taxonomy
-		add_action('init', array( $this, 'register_taxonomy' ) );
+		add_action( 'init', array( $this, 'register_taxonomy' ) );
 	}
 
 	/**
