@@ -394,14 +394,3 @@ msgstr ""
 msgid "Remove Wordpress Overhead"
 msgstr ""
 
-#. Plugin URI of the plugin/theme
-msgid "http://www.hughlashbrooke.com/"
-msgstr ""
-
-#. Author of the plugin/theme
-msgid "Hugh Lashbrooke"
-msgstr ""
-
-#. Author URI of the plugin/theme
-msgid "http://www.hughlashbrooke.com/"
-msgstr ""
