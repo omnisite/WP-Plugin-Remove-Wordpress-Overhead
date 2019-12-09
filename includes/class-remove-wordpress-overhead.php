@@ -280,6 +280,7 @@ class Remove_Wordpress_Overhead {
 		// remove the shortlink url from header
 		if ( isset( $options['shortlink'] ) && 'on' == $options['shortlink'] ) {
 			remove_action( 'wp_head', 'wp_shortlink_wp_head', 10, 0 );
+			remove_action( 'template_redirect', 'wp_shortlink_header', 11, 0 );
 		}
 
 		// remove wordpress generator version
