@@ -7,7 +7,7 @@
  * Author: Omnisite
  * Author URI: http://www.omnisite.nl
  * Requires at least: 3.9
- * Tested up to: 4.6
+ * Tested up to: 5.3
  *
  * Text Domain: remove-wordpress-overhead
  * Domain Path: /lang/
@@ -28,8 +28,6 @@ require_once( 'includes/class-remove-wordpress-overhead-settings.php' );
 
 // Load plugin libraries
 require_once( 'includes/lib/class-remove-wordpress-overhead-admin-api.php' );
-require_once( 'includes/lib/class-remove-wordpress-overhead-post-type.php' );
-require_once( 'includes/lib/class-remove-wordpress-overhead-taxonomy.php' );
 
 /**
  * Returns the main instance of Remove_Wordpress_Overhead to prevent the need to use globals.
@@ -38,7 +36,7 @@ require_once( 'includes/lib/class-remove-wordpress-overhead-taxonomy.php' );
  * @return object Remove_Wordpress_Overhead
  */
 function Remove_Wordpress_Overhead () {
-	$instance = Remove_Wordpress_Overhead::instance( __FILE__, '1.0.0', 'rwo_' );
+	$instance = Remove_Wordpress_Overhead::instance( __FILE__, '1.1.0', 'rwo_' );
 
 	if ( is_null( $instance->settings ) ) {
 		$instance->settings = Remove_Wordpress_Overhead_Settings::instance( $instance );

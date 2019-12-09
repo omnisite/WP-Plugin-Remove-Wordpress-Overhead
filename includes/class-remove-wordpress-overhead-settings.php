@@ -24,7 +24,7 @@ class Remove_Wordpress_Overhead_Settings {
 
 	/**
 	 * Prefix for plugin settings.
-	 * @var     string
+	 * @var	 string
 	 * @access  public
 	 * @since   1.0.0
 	 */
@@ -32,7 +32,7 @@ class Remove_Wordpress_Overhead_Settings {
 
 	/**
 	 * Available settings for plugin.
-	 * @var     array
+	 * @var	 array
 	 * @access  public
 	 * @since   1.0.0
 	 */
@@ -71,25 +71,6 @@ class Remove_Wordpress_Overhead_Settings {
 	public function add_menu_item () {
 		$page = add_options_page( __( 'Remove WP Overhead', 'remove-wordpress-overhead' ) , __( 'Remove WP Overhead', 'remove-wordpress-overhead' ) , 'manage_options' , $this->parent->_token . '_settings' ,  array( $this, 'settings_page' ) );
 		add_action( 'admin_print_styles-' . $page, array( $this, 'settings_assets' ) );
-	}
-
-	/**
-	 * Load settings JS & CSS
-	 * @return void
-	 */
-	public function settings_assets () {
-
-		// We're including the farbtastic script & styles here because they're needed for the colour picker
-		// If you're not including a colour picker field then you can leave these calls out as well as the farbtastic dependency for the wpt-admin-js script below
-		wp_enqueue_style( 'farbtastic' );
-    	wp_enqueue_script( 'farbtastic' );
-
-    	// We're including the WP media scripts here because they're needed for the image upload field
-    	// If you're not including an image upload then you can leave this function call out
-    	wp_enqueue_media();
-
-    	wp_register_script( $this->parent->_token . '-settings-js', $this->parent->assets_url . 'js/settings' . $this->parent->script_suffix . '.js', array( 'farbtastic', 'jquery' ), '1.0.0' );
-    	wp_enqueue_script( $this->parent->_token . '-settings-js' );
 	}
 
 	/**

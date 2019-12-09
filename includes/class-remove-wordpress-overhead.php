@@ -16,7 +16,7 @@ class Remove_Wordpress_Overhead {
 
 	/**
 	 * Settings class object
-	 * @var     object
+	 * @var	 object
 	 * @access  public
 	 * @since   1.0.0
 	 */
@@ -24,7 +24,7 @@ class Remove_Wordpress_Overhead {
 
 	/**
 	 * The version number.
-	 * @var     string
+	 * @var	 string
 	 * @access  public
 	 * @since   1.0.0
 	 */
@@ -32,7 +32,7 @@ class Remove_Wordpress_Overhead {
 
 	/**
 	 * The base prefix.
-	 * @var     string
+	 * @var	 string
 	 * @access  public
 	 * @since   1.0.0
 	 */
@@ -40,7 +40,7 @@ class Remove_Wordpress_Overhead {
 
 	/**
 	 * The token.
-	 * @var     string
+	 * @var	 string
 	 * @access  public
 	 * @since   1.0.0
 	 */
@@ -48,7 +48,7 @@ class Remove_Wordpress_Overhead {
 
 	/**
 	 * The main plugin file.
-	 * @var     string
+	 * @var	 string
 	 * @access  public
 	 * @since   1.0.0
 	 */
@@ -56,7 +56,7 @@ class Remove_Wordpress_Overhead {
 
 	/**
 	 * The main plugin directory.
-	 * @var     string
+	 * @var	 string
 	 * @access  public
 	 * @since   1.0.0
 	 */
@@ -64,7 +64,7 @@ class Remove_Wordpress_Overhead {
 
 	/**
 	 * The plugin assets directory.
-	 * @var     string
+	 * @var	 string
 	 * @access  public
 	 * @since   1.0.0
 	 */
@@ -72,7 +72,7 @@ class Remove_Wordpress_Overhead {
 
 	/**
 	 * The plugin assets URL.
-	 * @var     string
+	 * @var	 string
 	 * @access  public
 	 * @since   1.0.0
 	 */
@@ -80,7 +80,7 @@ class Remove_Wordpress_Overhead {
 
 	/**
 	 * Suffix for Javascripts.
-	 * @var     string
+	 * @var	 string
 	 * @access  public
 	 * @since   1.0.0
 	 */
@@ -129,40 +129,6 @@ class Remove_Wordpress_Overhead {
 	} // End __construct ()
 
 	/**
-	 * Wrapper function to register a new post type
-	 * @param  string $post_type   Post type name
-	 * @param  string $plural      Post type item plural name
-	 * @param  string $single      Post type item single name
-	 * @param  string $description Description of post type
-	 * @return object              Post type class object
-	 */
-	public function register_post_type ( $post_type = '', $plural = '', $single = '', $description = '', $options = array() ) {
-
-		if ( ! $post_type || ! $plural || ! $single ) return;
-
-		$post_type = new Remove_Wordpress_Overhead_Post_Type( $post_type, $plural, $single, $description, $options );
-
-		return $post_type;
-	}
-
-	/**
-	 * Wrapper function to register a new taxonomy
-	 * @param  string $taxonomy   Taxonomy name
-	 * @param  string $plural     Taxonomy single name
-	 * @param  string $single     Taxonomy plural name
-	 * @param  array  $post_types Post types to which this taxonomy applies
-	 * @return object             Taxonomy class object
-	 */
-	public function register_taxonomy ( $taxonomy = '', $plural = '', $single = '', $post_types = array(), $taxonomy_args = array() ) {
-
-		if ( ! $taxonomy || ! $plural || ! $single ) return;
-
-		$taxonomy = new Remove_Wordpress_Overhead_Taxonomy( $taxonomy, $plural, $single, $post_types, $taxonomy_args );
-
-		return $taxonomy;
-	}
-
-	/**
 	 * Load admin CSS.
 	 * @access  public
 	 * @since   1.0.0
@@ -201,12 +167,12 @@ class Remove_Wordpress_Overhead {
 	 * @return  void
 	 */
 	public function load_plugin_textdomain () {
-	    $domain = 'remove-wordpress-overhead';
+		$domain = 'remove-wordpress-overhead';
 
-	    $locale = apply_filters( 'plugin_locale', get_locale(), $domain );
+		$locale = apply_filters( 'plugin_locale', get_locale(), $domain );
 
-	    load_textdomain( $domain, WP_LANG_DIR . '/' . $domain . '/' . $domain . '-' . $locale . '.mo' );
-	    load_plugin_textdomain( $domain, false, dirname( plugin_basename( $this->file ) ) . '/lang/' );
+		load_textdomain( $domain, WP_LANG_DIR . '/' . $domain . '/' . $domain . '-' . $locale . '.mo' );
+		load_plugin_textdomain( $domain, false, dirname( plugin_basename( $this->file ) ) . '/lang/' );
 	} // End load_plugin_textdomain ()
 
 	/**
@@ -266,9 +232,9 @@ class Remove_Wordpress_Overhead {
 
 	/**
 	 * Do the removing of stuff
-	 * @access    private
-	 * @since     1.0.0
-	 * @return    void
+	 * @access	private
+	 * @since	 1.0.0
+	 * @return	void
 	 */
 	private function removeStuff() {
 		$options = array();
@@ -291,30 +257,30 @@ class Remove_Wordpress_Overhead {
 
 		// remove really simple discovery link
 		if ( isset( $options['rsd_link'] ) && 'on' == $options['rsd_link'] ) {
-			remove_action('wp_head', 'rsd_link');
+			remove_action( 'wp_head', 'rsd_link' );
 		}
 
 		// remove wlwmanifest.xml (needed to support windows live writer)
 		if ( isset( $options['wlwmanifest'] ) && 'on' == $options['wlwmanifest'] ) {
-			remove_action('wp_head', 'wlwmanifest_link'); 
+			remove_action( 'wp_head', 'wlwmanifest_link' );
 		}
 
 		// remove rss feed and exta feed links (make sure you add them in yourself if you are using as RSS service
 		if ( isset( $options['feed_links'] ) && 'on' == $options['feed_links'] ) {
-			remove_action('wp_head', 'feed_links', 2);
-			remove_action('wp_head', 'feed_links_extra', 3);
+			remove_action( 'wp_head', 'feed_links', 2 );
+			remove_action( 'wp_head', 'feed_links_extra', 3 );
 		}
 
 		// remove the next and previous post links
 		if ( isset( $options['next_prev'] ) && 'on' == $options['next_prev'] ) {
-			remove_action('wp_head', 'adjacent_posts_rel_link', 10, 0);
-			remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0 );
+			remove_action( 'wp_head', 'adjacent_posts_rel_link', 10, 0 );
+			remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0 );
 		}
 
 		// remove the shortlink url from header
 		if ( isset( $options['shortlink'] ) && 'on' == $options['shortlink'] ) {
-			remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0 );
-			remove_action('template_redirect', 'wp_shortlink_header', 11, 0 );
+			remove_action( 'wp_head', 'wp_shortlink_wp_head', 10, 0 );
+			remove_action( 'template_redirect', 'wp_shortlink_header', 11, 0 );
 		}
 
 		// remove wordpress generator version
@@ -341,7 +307,7 @@ class Remove_Wordpress_Overhead {
 
 		// remove canonical link
 		if ( isset( $options['canonical'] ) && 'on' == $options['canonical'] ) {
-			remove_action('embed_head', 'rel_canonical');
+			remove_action( 'embed_head', 'rel_canonical' );
 			add_filter( 'wpseo_canonical', '__return_false' );
 		}
 
@@ -353,15 +319,15 @@ class Remove_Wordpress_Overhead {
 		// disable wp widgets
 		if ( isset( $options['widgets'] ) && '' != $options['widgets'] && is_array( $options['widgets'] ) ) {
 			// unregister widgets
-			add_action('widgets_init', array( $this, 'unregister_default_widgets' ), 11);
+			add_action( 'widgets_init', array( $this, 'unregister_default_widgets' ), 11 );
 		}
 	}
 
 	/**
 	 * Remove JSON API links from header
-	 * @access    public
-	 * @since     1.0.0
-	 * @return    void
+	 * @access	public
+	 * @since	 1.0.0
+	 * @return	void
 	 */
 	public function remove_json_api () {
 		remove_action( 'wp_head', 'rest_output_link_wp_head', 10 );
@@ -376,22 +342,22 @@ class Remove_Wordpress_Overhead {
 
 	/**
 	 * Disable JSON API
-	 * @access    public
-	 * @since     1.0.0
-	 * @return    void
+	 * @access	public
+	 * @since	 1.0.0
+	 * @return	void
 	 */
 	public function disable_json_api () {
-		add_filter('json_enabled', '__return_false');
-		add_filter('json_jsonp_enabled', '__return_false');
-		add_filter('rest_enabled', '__return_false');
-		add_filter('rest_jsonp_enabled', '__return_false');
+		add_filter( 'json_enabled', '__return_false' );
+		add_filter( 'json_jsonp_enabled', '__return_false' );
+		add_filter( 'rest_enabled', '__return_false' );
+		add_filter( 'rest_jsonp_enabled', '__return_false' );
 	}
 
 	/**
 	 * Unregister WP Widgets
-	 * @access    public
-	 * @since     1.0.0
-	 * @return    void
+	 * @access	public
+	 * @since	 1.0.0
+	 * @return	void
 	 */
 	public function unregister_default_widgets() {
 		$options['widgets'] = get_option( $this->_base . 'disable_wp_widgets' );
@@ -402,9 +368,9 @@ class Remove_Wordpress_Overhead {
 
 	/**
 	 * Delete settings transient on save options page
-	 * @access    public
-	 * @since     1.0.0
-	 * @return    void
+	 * @access	public
+	 * @since	 1.0.0
+	 * @return	void
 	 */
 	public function deleteTransients() {
 		if( isset( $_GET['settings-updated'] ) && $_GET['settings-updated'] ) {
@@ -414,9 +380,9 @@ class Remove_Wordpress_Overhead {
 
 	/**
 	 * Remove WP generator link
-	 * @access    public
-	 * @since     1.1.0
-	 * @return    void
+	 * @access	public
+	 * @since	 1.1.0
+	 * @return	void
 	 */
 	public function wp_remove_version() {
 		return '';
@@ -424,9 +390,9 @@ class Remove_Wordpress_Overhead {
 
 	/**
 	 * Remove version numbers at the end of css and js files
-	 * @access    public
-	 * @since     1.1.0
-	 * @return    void
+	 * @access	public
+	 * @since	 1.1.0
+	 * @return	void
 	 */
 	public function remove_ver_css_js( $src ) {
 		if ( strpos( $src, 'ver=' ) ) {
@@ -437,9 +403,9 @@ class Remove_Wordpress_Overhead {
 
 	/**
 	 * Disable WP emojicons
-	 * @access    public
-	 * @since     1.1.0
-	 * @return    void
+	 * @access	public
+	 * @since	 1.1.0
+	 * @return	void
 	 */
 	public function disable_wp_emojicons() {
 		remove_action( 'admin_print_styles', 'print_emoji_styles' );
@@ -454,9 +420,9 @@ class Remove_Wordpress_Overhead {
 
 	/**
 	 * Disable WP emojicons from TinyMCE
-	 * @access    public
-	 * @since     1.1.0
-	 * @return    void
+	 * @access	public
+	 * @since	 1.1.0
+	 * @return	void
 	 */
 	public function disable_emojicons_tinymce( $plugins ) {
 		if ( is_array( $plugins ) ) {
