@@ -7,7 +7,7 @@
  * Author: Omnisite
  * Author URI: http://www.omnisite.nl
  * Requires at least: 3.9
- * Tested up to: 4.6
+ * Tested up to: 5.3
  *
  * Text Domain: remove-wordpress-overhead
  * Domain Path: /lang/
