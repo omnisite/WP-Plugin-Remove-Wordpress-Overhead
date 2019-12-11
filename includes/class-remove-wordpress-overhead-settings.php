@@ -179,6 +179,13 @@ class Remove_Wordpress_Overhead_Settings {
 					'default'		=> ''
 				),
 				array(
+					'id' 			=> 'disable_xmlrpc',
+					'label'			=> __( 'Disable XML-RPC Methods', 'remove-wordpress-overhead' ),
+					'description'	=> __( 'Disable XML-RPC methods requiring authentication.', 'remove-wordpress-overhead' ),
+					'type'			=> 'checkbox',
+					'default'		=> ''
+				),
+				array(
 					'id' 			=> 'disable_wp_widgets',
 					'label'			=> __( 'WP Widgets<br><small>Check which widgets you want to disable</small>', 'remove-wordpress-overhead' ),
 					'description'	=> __( 'Check which widgets you want to disable', 'remove-wordpress-overhead' ),

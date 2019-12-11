@@ -253,6 +253,7 @@ class Remove_Wordpress_Overhead {
 			$options['woo_generator'] = get_option( $this->_base . 'remove_woo_generator' );
 			$options['widgets'] = get_option( $this->_base . 'disable_wp_widgets' );
 			$options['jquery_migrate'] = get_option( $this->_base . 'remove_jquery_migrate' );
+			$options['disable_xmlrpc'] = get_option( $this->_base . 'disable_xmlrpc' );
 			set_transient( $this->_base . 'transient_settings', $options );
 		}
 
@@ -328,12 +329,17 @@ class Remove_Wordpress_Overhead {
 			add_action( 'wp_default_scripts', array( $this, 'remove_jquery_migrate' ), 9999 );
 		}
 
+		// disable XML-RPC
+		if ( isset( $options['disable_xmlrpc'] ) && 'on' == $options['disable_xmlrpc'] ) {
+			add_action( 'wp_default_scripts', array( $this, 'disable_xmlrpc' ), 9999 );
+		}
+
 	}
 
 	/**
 	 * Remove JSON API links from header
 	 * @access	public
-	 * @since	 1.0.0
+	 * @since	1.0.0
 	 * @return	void
 	 */
 	public function remove_json_api () {
@@ -350,7 +356,7 @@ class Remove_Wordpress_Overhead {
 	/**
 	 * Disable JSON API
 	 * @access	public
-	 * @since	 1.0.0
+	 * @since	1.0.0
 	 * @return	void
 	 */
 	public function disable_json_api () {
@@ -363,7 +369,7 @@ class Remove_Wordpress_Overhead {
 	/**
 	 * Unregister WP Widgets
 	 * @access	public
-	 * @since	 1.0.0
+	 * @since	1.0.0
 	 * @return	void
 	 */
 	public function unregister_default_widgets() {
@@ -376,7 +382,7 @@ class Remove_Wordpress_Overhead {
 	/**
 	 * Delete settings transient on save options page
 	 * @access	public
-	 * @since	 1.0.0
+	 * @since	1.0.0
 	 * @return	void
 	 */
 	public function deleteTransients() {
@@ -388,7 +394,7 @@ class Remove_Wordpress_Overhead {
 	/**
 	 * Remove WP generator link
 	 * @access	public
-	 * @since	 1.1.0
+	 * @since	1.1.0
 	 * @return	void
 	 */
 	public function wp_remove_version() {
@@ -398,7 +404,7 @@ class Remove_Wordpress_Overhead {
 	/**
 	 * Remove version numbers at the end of css and js files
 	 * @access	public
-	 * @since	 1.1.0
+	 * @since	1.1.0
 	 * @return	void
 	 */
 	public function remove_ver_css_js( $src ) {
@@ -411,7 +417,7 @@ class Remove_Wordpress_Overhead {
 	/**
 	 * Disable WP emojicons
 	 * @access	public
-	 * @since	 1.1.0
+	 * @since	1.1.0
 	 * @return	void
 	 */
 	public function disable_wp_emojicons() {
@@ -428,7 +434,7 @@ class Remove_Wordpress_Overhead {
 	/**
 	 * Disable WP emojicons from TinyMCE
 	 * @access	public
-	 * @since	 1.1.0
+	 * @since	1.1.0
 	 * @return	void
 	 */
 	public function disable_emojicons_tinymce( $plugins ) {
@@ -443,7 +449,7 @@ class Remove_Wordpress_Overhead {
 	 * Remove jQuery Migrate script
 	 * Code from: https://dotlayer.com/what-is-migrate-js-why-and-how-to-remove-jquery-migrate-from-wordpress/
 	 * @access	public
-	 * @since	 1.4.0
+	 * @since	1.4.0
 	 * @return	void
 	 */
 	public function remove_jquery_migrate( $scripts ) {
@@ -456,6 +462,16 @@ class Remove_Wordpress_Overhead {
 				) );
 			}
 		}
+	}
+
+	/**
+	 * Disable XML-RPC methods that require authentication
+	 * @access	public
+	 * @since	1.4.0
+	 * @return	void
+	 */
+	public function disable_xmlrpc( $scripts ) {
+		add_filter( 'xmlrpc_enabled', '__return_false' );
 	}
 
 }

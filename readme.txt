@@ -1,7 +1,7 @@
 === Remove Wordpress Overhead ===
 Contributors: Omnisite
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=8ZS4SEBD4EA7W
-Tags: wordpress, header, remove widgets, disable widgets, remove, clean, strip, version, disable, rsd link, wp generator, feed link, rss feed, shortlink, next, prev, wp generator, version number, wlwmanifest, emojicons, json api
+Tags: wordpress, header, remove widgets, disable widgets, remove, clean, strip, version, disable, rsd link, wp generator, feed link, rss feed, shortlink, next, prev, wp generator, version number, wlwmanifest, emojicons, json api, jquery migrate, jqmigrate, xml rpc, xml-rpc
 Requires at least: 3.9
 Tested up to: 5.3
 Stable tag: 1.3.1
@@ -26,6 +26,8 @@ Header items you can remove:
 * Disable JSON API
 * Disable Canonical URL
 * Remove WooCommerce Generator Meta
+* Remove jQuery Migrate script
+* Disable XML-RPC methods that require authentication
 
 You can disable the following widgets:
 * Archives
@@ -60,6 +62,7 @@ Installing "Remove Wordpress Overhead" can be done either by searching for "Remo
 * 2019-12-11
 * contributions by by Mathew Callaghan (https://github.com/mathewcallaghan)
 * remove jQuery Migrate script
+* disable XML-RPC methods that require authentication
 
 = 1.3.1 =
 * 2019-12-09
