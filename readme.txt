@@ -60,7 +60,7 @@ Installing "Remove Wordpress Overhead" can be done either by searching for "Remo
 
 = 1.4.0 =
 * 2019-12-11
-* contributions by by Mathew Callaghan (https://github.com/mathewcallaghan)
+* contributions by Mathew Callaghan (https://github.com/mathewcallaghan)
 * remove jQuery Migrate script
 * disable XML-RPC methods that require authentication
 
