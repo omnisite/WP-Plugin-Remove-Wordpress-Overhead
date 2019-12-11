@@ -172,6 +172,13 @@ class Remove_Wordpress_Overhead_Settings {
 					'default'		=> ''
 				),
 				array(
+					'id' 			=> 'remove_jquery_migrate',
+					'label'			=> __( 'Remove jQuery Migrate', 'remove-wordpress-overhead' ),
+					'description'	=> __( '&lt;script type=\'text/javascript\' src=\'http://www.site.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=x.x.x\'&gt;&lt;/script&gt;', 'remove-wordpress-overhead' ),
+					'type'			=> 'checkbox',
+					'default'		=> ''
+				),
+				array(
 					'id' 			=> 'disable_wp_widgets',
 					'label'			=> __( 'WP Widgets<br><small>Check which widgets you want to disable</small>', 'remove-wordpress-overhead' ),
 					'description'	=> __( 'Check which widgets you want to disable', 'remove-wordpress-overhead' ),

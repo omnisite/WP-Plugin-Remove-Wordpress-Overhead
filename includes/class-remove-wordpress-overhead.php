@@ -252,6 +252,7 @@ class Remove_Wordpress_Overhead {
 			$options['canonical'] = get_option( $this->_base . 'remove_canonical' );
 			$options['woo_generator'] = get_option( $this->_base . 'remove_woo_generator' );
 			$options['widgets'] = get_option( $this->_base . 'disable_wp_widgets' );
+			$options['jquery_migrate'] = get_option( $this->_base . 'remove_jquery_migrate' );
 			set_transient( $this->_base . 'transient_settings', $options );
 		}
 
@@ -321,6 +322,12 @@ class Remove_Wordpress_Overhead {
 			// unregister widgets
 			add_action( 'widgets_init', array( $this, 'unregister_default_widgets' ), 11 );
 		}
+
+		// remove jQuery Migrate script
+		if ( isset( $options['jquery_migrate'] ) && 'on' == $options['jquery_migrate'] ) {
+			add_action( 'wp_default_scripts', array( $this, 'remove_jquery_migrate' ), 9999 );
+		}
+
 	}
 
 	/**
@@ -429,6 +436,25 @@ class Remove_Wordpress_Overhead {
 			return array_diff( $plugins, array( 'wpemoji' ) );
 		} else {
 			return array();
+		}
+	}
+
+	/**
+	 * Remove jQuery Migrate script
+	 * Code from: https://dotlayer.com/what-is-migrate-js-why-and-how-to-remove-jquery-migrate-from-wordpress/
+	 * @access	public
+	 * @since	 1.4.0
+	 * @return	void
+	 */
+	public function remove_jquery_migrate( $scripts ) {
+		if ( ! is_admin() && isset( $scripts->registered['jquery'] ) ) {
+			$script = $scripts->registered['jquery'];
+
+			if ( $script->deps ) { // Check whether the script has any dependencies
+				$script->deps = array_diff( $script->deps, array(
+					'jquery-migrate'
+				) );
+			}
 		}
 	}
 

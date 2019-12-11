@@ -56,13 +56,18 @@ Installing "Remove Wordpress Overhead" can be done either by searching for "Remo
 
 == Changelog ==
 
+= 1.4.0 =
+* 2019-12-11
+* contributions by by Mathew Callaghan (https://github.com/mathewcallaghan)
+* remove jQuery Migrate script
+
 = 1.3.1 =
 * 2019-12-09
 * increased tested WP version
 
 = 1.3.0 =
 * 2019-12-09
-* contribution by Bill https://github.com/lefooey :
+* contribution by Bill (https://github.com/lefooey) :
 * If short links are turned off, this also removes the short link that
 * Wordpress puts in the HTTP headers
 * Thanks Bill. Sorry for the 2 year delay in merging :-)
