@@ -186,6 +186,13 @@ class Remove_Wordpress_Overhead_Settings {
 					'default'		=> ''
 				),
 				array(
+					'id' 			=> 'remove_block_scripts',
+					'label'			=> __( 'Remove Gutenberg block scripts', 'remove-wordpress-overhead' ),
+					'description'	=> __( 'If you do not use the Gutenberg editor, this will remove all css and scripts added by Gutenberg. Like:<br>&lt;link rel=\'stylesheet\' id=\'wp-block-library-css\'  href=\'https://www.site.com/wp/wp-includes/css/dist/block-library/style.css?ver=x.x.x\' type=\'text/css\' media=\'all\' /&gt;<br>&lt;link rel=\'stylesheet\' id=\'wc-block-style-css\'  href=\'https://www.site.com/app/plugins/woocommerce/packages/woocommerce-blocks/build/style.css?ver=xxx\' type=\'text/css\' media=\'all\' /&gt;', 'remove-wordpress-overhead' ),
+					'type'			=> 'checkbox',
+					'default'		=> ''
+				),
+				array(
 					'id' 			=> 'disable_wp_widgets',
 					'label'			=> __( 'WP Widgets<br><small>Check which widgets you want to disable</small>', 'remove-wordpress-overhead' ),
 					'description'	=> __( 'Check which widgets you want to disable', 'remove-wordpress-overhead' ),

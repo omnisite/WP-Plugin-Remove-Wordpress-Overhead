@@ -254,6 +254,7 @@ class Remove_Wordpress_Overhead {
 			$options['widgets'] = get_option( $this->_base . 'disable_wp_widgets' );
 			$options['jquery_migrate'] = get_option( $this->_base . 'remove_jquery_migrate' );
 			$options['disable_xmlrpc'] = get_option( $this->_base . 'disable_xmlrpc' );
+			$options['remove_block_scripts'] = get_option( $this->_base . 'remove_block_scripts' );
 			set_transient( $this->_base . 'transient_settings', $options );
 		}
 
@@ -332,6 +333,11 @@ class Remove_Wordpress_Overhead {
 		// disable XML-RPC
 		if ( isset( $options['disable_xmlrpc'] ) && 'on' == $options['disable_xmlrpc'] ) {
 			add_action( 'wp_default_scripts', array( $this, 'disable_xmlrpc' ), 9999 );
+		}
+
+		// remove Gutenberg scrips
+		if ( isset( $options['remove_block_scripts'] ) && 'on' == $options['remove_block_scripts'] ) {
+			add_action( 'wp_default_scripts', array( $this, 'remove_block_scripts' ), 9999 );
 		}
 
 	}
@@ -472,6 +478,28 @@ class Remove_Wordpress_Overhead {
 	 */
 	public function disable_xmlrpc( $scripts ) {
 		add_filter( 'xmlrpc_enabled', '__return_false' );
+	}
+
+	/**
+	 * Remove all scripts and styles added by Gutenberg
+	 * @access	public
+	 * @since	1.5.0
+	 * @return	void
+	 */
+	public function remove_block_scripts( $scripts ) {
+		add_action( 'wp_enqueue_scripts', array( self::$_instance, 'remove_block_scripts_action' ) );
+		remove_action( 'enqueue_block_assets', 'wp_enqueue_registered_block_scripts_and_styles' );
+	}
+
+	/**
+	 * Dequeue all scripts and styles added by Gutenberg
+	 * @access	public
+	 * @since	1.5.0
+	 * @return	void
+	 */
+	public function remove_block_scripts_action() {
+		wp_dequeue_style( 'wp-block-library' );
+		wp_dequeue_style( 'wc-block-style' );
 	}
 
 }
