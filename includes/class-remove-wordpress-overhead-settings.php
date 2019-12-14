@@ -70,7 +70,6 @@ class Remove_Wordpress_Overhead_Settings {
 	 */
 	public function add_menu_item () {
 		$page = add_options_page( __( 'Remove WP Overhead', 'remove-wordpress-overhead' ) , __( 'Remove WP Overhead', 'remove-wordpress-overhead' ) , 'manage_options' , $this->parent->_token . '_settings' ,  array( $this, 'settings_page' ) );
-		add_action( 'admin_print_styles-' . $page, array( $this, 'settings_assets' ) );
 	}
 
 	/**
