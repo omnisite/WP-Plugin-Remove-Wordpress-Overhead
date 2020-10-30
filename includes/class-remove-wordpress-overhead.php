@@ -255,6 +255,7 @@ class Remove_Wordpress_Overhead {
 			$options['jquery_migrate'] = get_option( $this->_base . 'remove_jquery_migrate' );
 			$options['disable_xmlrpc'] = get_option( $this->_base . 'disable_xmlrpc' );
 			$options['remove_block_scripts'] = get_option( $this->_base . 'remove_block_scripts' );
+			$options['disable_gravatar'] = get_option( $this->_base . 'disable_gravatar' );
 			set_transient( $this->_base . 'transient_settings', $options );
 		}
 
@@ -340,6 +341,11 @@ class Remove_Wordpress_Overhead {
 			add_action( 'wp_default_scripts', array( $this, 'remove_block_scripts' ), 9999 );
 		}
 
+		// disable gravatar
+		if ( isset( $options['disable_gravatar'] ) && 'on' == $options['disable_gravatar'] ) {
+			add_filter( 'get_avatar', '__return_false' );
+			add_filter( 'option_show_avatars', '__return_false' );
+		}
 	}
 
 	/**
