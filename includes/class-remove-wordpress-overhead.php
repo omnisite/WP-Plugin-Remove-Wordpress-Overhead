@@ -247,7 +247,7 @@ class Remove_Wordpress_Overhead {
 			$options['shortlink'] = get_option( $this->_base . 'remove_shortlink' );
 			$options['wp_generator'] = get_option( $this->_base . 'remove_wp_generator' );
 			$options['ver'] = get_option( $this->_base . 'remove_version_numbers_from_style_script' );
-			$options['emojicons'] = get_option( $this->_base . 'disable_wp_emojicons' );
+			$options['emojis'] = get_option( $this->_base . 'disable_wp_emojis' );
 			$options['json_api'] = get_option( $this->_base . 'disable_json_api' );
 			$options['canonical'] = get_option( $this->_base . 'remove_canonical' );
 			$options['woo_generator'] = get_option( $this->_base . 'remove_woo_generator' );
@@ -298,8 +298,8 @@ class Remove_Wordpress_Overhead {
 		}
 
 		// remove emoji styles and script from header
-		if ( isset( $options['emojicons'] ) && 'on' == $options['emojicons'] ) {
-			add_action( 'init', array( $this, 'disable_wp_emojicons' ) );
+		if ( isset( $options['emojis'] ) && 'on' == $options['emojis'] ) {
+			add_action( 'init', array( $this, 'disable_wp_emojis' ) );
 		}
 
 		// disable json api and remove link from header
@@ -421,12 +421,12 @@ class Remove_Wordpress_Overhead {
 	}
 
 	/**
-	 * Disable WP emojicons
-	 * @access	public
-	 * @since	1.1.0
-	 * @return	void
+	 * Disable WP emojis
+	 * @access    public
+	 * @return    void
+	 * @since    1.1.0
 	 */
-	public function disable_wp_emojicons() {
+	public function disable_wp_emojis() {
 		remove_action( 'admin_print_styles', 'print_emoji_styles' );
 		remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
 		remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
@@ -434,21 +434,39 @@ class Remove_Wordpress_Overhead {
 		remove_filter( 'wp_mail', 'wp_staticize_emoji_for_email' );
 		remove_filter( 'the_content_feed', 'wp_staticize_emoji' );
 		remove_filter( 'comment_text_rss', 'wp_staticize_emoji' );
-		add_filter( 'tiny_mce_plugins', array( $this, 'disable_emojicons_tinymce' ) );
+		add_filter( 'tiny_mce_plugins', array( $this, 'disable_emojis_tinymce' ) );
+		add_filter( 'wp_resource_hints', array( $this, 'disable_emojis_remove_dns_prefetch' ) );
 	}
 
 	/**
-	 * Disable WP emojicons from TinyMCE
-	 * @access	public
-	 * @since	1.1.0
-	 * @return	void
+	 * Disable WP emojis from TinyMCE
+	 * @access    public
+	 * @return    void
+	 * @since    1.1.0
 	 */
-	public function disable_emojicons_tinymce( $plugins ) {
+	public function disable_emojis_tinymce( $plugins ) {
 		if ( is_array( $plugins ) ) {
 			return array_diff( $plugins, array( 'wpemoji' ) );
 		} else {
 			return array();
 		}
+	}
+
+	/**
+	 * Disable WP emojis DNS prefetch
+	 * @param $urls
+	 * @param $relation_type
+	 *
+	 * @return array
+	 */
+	public function disable_emojis_remove_dns_prefetch( $urls, $relation_type ) {
+		if ( 'dns-prefetch' === $relation_type ) {
+			$emojicon_svg_url = apply_filters( 'emoji_svg_url', 'https://s.w.org/images/core/emoji/2/svg/' );
+
+			$urls = array_diff( $urls, array( $emojicon_svg_url ) );
+		}
+
+		return $urls;
 	}
 
 	/**
