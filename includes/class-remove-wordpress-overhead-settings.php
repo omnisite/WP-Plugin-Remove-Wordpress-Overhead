@@ -198,6 +198,13 @@ class Remove_Wordpress_Overhead_Settings {
 					'type'			=> 'checkbox_multi',
 					'options'		=> array( 'WP_Widget_Archives' => '1. Archives&nbsp;&nbsp;&nbsp;', 'WP_Widget_Calendar' => '2. Calendar&nbsp;&nbsp;&nbsp;', 'WP_Widget_Categories' => '3. Categories&nbsp;&nbsp;&nbsp;', 'WP_Widget_Links' => '4. Links&nbsp;&nbsp;&nbsp;', 'WP_Widget_Meta' => '5. Meta&nbsp;&nbsp;&nbsp;', 'WP_Nav_Menu_Widget' => '6. Nav Menu&nbsp;&nbsp;&nbsp;', 'WP_Widget_Pages' => '7. Pages&nbsp;&nbsp;&nbsp;', 'WP_Widget_Recent_Comments' => '8. Recent Comments&nbsp;&nbsp;&nbsp;', 'WP_Widget_Recent_Posts' => '9. Recent Posts&nbsp;&nbsp;&nbsp;', 'WP_Widget_RSS' => '10. RSS&nbsp;&nbsp;&nbsp;', 'WP_Widget_Search' => '11. Search&nbsp;&nbsp;&nbsp;', 'WP_Widget_Tag_Cloud' => '12. Tag Cloud&nbsp;&nbsp;&nbsp;', 'WP_Widget_Text' => '13. Text&nbsp;&nbsp;&nbsp;' )
 				),
+                array(
+                    'id' 			=> 'disable_gravatar',
+                    'label'			=> __( 'Disable Gravatar', 'remove-wordpress-overhead' ),
+                    'description'	=> __( 'Disable automatic Gravatar lookup and loading', 'remove-wordpress-overhead' ),
+                    'type'			=> 'checkbox',
+                    'default'		=> ''
+                ),
 			)
 		);
 
