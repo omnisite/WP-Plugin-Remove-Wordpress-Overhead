@@ -442,7 +442,7 @@ class Remove_Wordpress_Overhead {
 		remove_filter( 'the_content_feed', 'wp_staticize_emoji' );
 		remove_filter( 'comment_text_rss', 'wp_staticize_emoji' );
 		add_filter( 'tiny_mce_plugins', array( $this, 'disable_emojis_tinymce' ) );
-		add_filter( 'wp_resource_hints', array( $this, 'disable_emojis_remove_dns_prefetch' ) );
+		add_filter( 'wp_resource_hints', array( $this, 'disable_emojis_remove_dns_prefetch' ), 1, 2 );
 	}
 
 	/**
