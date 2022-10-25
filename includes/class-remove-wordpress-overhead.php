@@ -312,6 +312,7 @@ class Remove_Wordpress_Overhead {
 		// remove canonical link
 		if ( isset( $options['canonical'] ) && 'on' == $options['canonical'] ) {
 			remove_action( 'embed_head', 'rel_canonical' );
+			remove_action( 'wp_head', 'rel_canonical' );
 			add_filter( 'wpseo_canonical', '__return_false' );
 		}
 
