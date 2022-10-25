@@ -239,7 +239,7 @@ class Remove_Wordpress_Overhead {
 	private function removeStuff() {
 		$options = array();
 		// get transient with options or set it of not available
-		if ( false === $options = get_transient( $this->_base . 'transient_settings' ) ) {
+		if ( false === $options = get_transient( $this->_base . 'transient_settingsv2' ) ) {
 			$options['rsd_link'] = get_option( $this->_base . 'remove_rsd_link' );
 			$options['wlwmanifest'] = get_option( $this->_base . 'remove_wlwmanifest_link' );
 			$options['feed_links'] = get_option( $this->_base . 'remove_rss_feed_links' );
@@ -247,7 +247,7 @@ class Remove_Wordpress_Overhead {
 			$options['shortlink'] = get_option( $this->_base . 'remove_shortlink' );
 			$options['wp_generator'] = get_option( $this->_base . 'remove_wp_generator' );
 			$options['ver'] = get_option( $this->_base . 'remove_version_numbers_from_style_script' );
-			$options['emojis'] = get_option( $this->_base . 'disable_wp_emojis' );
+			$options['emojis'] = get_option( $this->_base . 'disable_wp_emojicons' );
 			$options['json_api'] = get_option( $this->_base . 'disable_json_api' );
 			$options['canonical'] = get_option( $this->_base . 'remove_canonical' );
 			$options['woo_generator'] = get_option( $this->_base . 'remove_woo_generator' );
@@ -256,7 +256,7 @@ class Remove_Wordpress_Overhead {
 			$options['disable_xmlrpc'] = get_option( $this->_base . 'disable_xmlrpc' );
 			$options['remove_block_scripts'] = get_option( $this->_base . 'remove_block_scripts' );
 			$options['disable_gravatar'] = get_option( $this->_base . 'disable_gravatar' );
-			set_transient( $this->_base . 'transient_settings', $options );
+			set_transient( $this->_base . 'transient_settingsv2', $options );
 		}
 
 		// remove really simple discovery link
