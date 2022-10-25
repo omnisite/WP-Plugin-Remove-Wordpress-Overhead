@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: wordpress, header, remove widgets, disable widgets, remove, clean, strip, version, disable, rsd link, wp generator, feed link, rss feed, shortlink, next, prev, wp generator, version number, wlwmanifest, emojicons, json api, jquery migrate, jqmigrate, xml rpc, xml-rpc, gutenberg, block, speed, pagespeed
 Requires at least: 5.0
 Tested up to: 6.0.1
-Stable tag: 1.5.2
+Stable tag: 1.5.3
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -58,6 +58,10 @@ Installing "Remove Wordpress Overhead" can be done either by searching for "Remo
 1. screenshot-1: settings screen
 
 == Changelog ==
+
+= 1.5.3 =
+* 2022-10-25
+* also removed canonical action from wp_head: thanks to Joy Reynolds (https://github.com/joyously)
 
 = 1.5.2 =
 * 2022-07-14
