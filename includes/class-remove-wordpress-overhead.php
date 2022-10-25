@@ -92,16 +92,16 @@ class Remove_Wordpress_Overhead {
 	 * @since   1.0.0
 	 * @return  void
 	 */
-	public function __construct ( $file = '', $version = '1.0.0', $base = 'wp_plugin_' ) {
+	public function __construct( $file = '', $version = '1.0.0', $base = 'wp_plugin_' ) {
 		$this->_version = $version;
-		$this->_base = $base;
-		$this->_token = 'remove_wordpress_overhead';
+		$this->_base    = $base;
+		$this->_token   = 'remove_wordpress_overhead';
 
 		// Load plugin environment variables
-		$this->file = $file;
-		$this->dir = dirname( $this->file );
-		$this->assets_dir = trailingslashit( $this->dir ) . 'assets';
-		$this->assets_url = esc_url( trailingslashit( plugins_url( '/assets/', $this->file ) ) );
+		$this->file          = $file;
+		$this->dir           = dirname( $this->file );
+		$this->assets_dir    = trailingslashit( $this->dir ) . 'assets';
+		$this->assets_url    = esc_url( trailingslashit( plugins_url( '/assets/', $this->file ) ) );
 
 		$this->script_suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
 
@@ -134,7 +134,7 @@ class Remove_Wordpress_Overhead {
 	 * @since   1.0.0
 	 * @return  void
 	 */
-	public function admin_enqueue_styles ( $hook = '' ) {
+	public function admin_enqueue_styles( $hook = '' ) {
 		wp_register_style( $this->_token . '-admin', esc_url( $this->assets_url ) . 'css/admin' . $this->script_suffix . '.css', array(), $this->_version );
 		wp_enqueue_style( $this->_token . '-admin' );
 	} // End admin_enqueue_styles ()
@@ -145,7 +145,7 @@ class Remove_Wordpress_Overhead {
 	 * @since   1.0.0
 	 * @return  void
 	 */
-	public function admin_enqueue_scripts ( $hook = '' ) {
+	public function admin_enqueue_scripts( $hook = '' ) {
 		wp_register_script( $this->_token . '-admin', esc_url( $this->assets_url ) . 'js/admin' . $this->script_suffix . '.js', array( 'jquery' ), $this->_version );
 		wp_enqueue_script( $this->_token . '-admin' );
 	} // End admin_enqueue_scripts ()
@@ -156,7 +156,7 @@ class Remove_Wordpress_Overhead {
 	 * @since   1.0.0
 	 * @return  void
 	 */
-	public function load_localisation () {
+	public function load_localisation() {
 		load_plugin_textdomain( 'remove-wordpress-overhead', false, dirname( plugin_basename( $this->file ) ) . '/lang/' );
 	} // End load_localisation ()
 
@@ -166,7 +166,7 @@ class Remove_Wordpress_Overhead {
 	 * @since   1.0.0
 	 * @return  void
 	 */
-	public function load_plugin_textdomain () {
+	public function load_plugin_textdomain() {
 		$domain = 'remove-wordpress-overhead';
 
 		$locale = apply_filters( 'plugin_locale', get_locale(), $domain );
@@ -185,7 +185,7 @@ class Remove_Wordpress_Overhead {
 	 * @see Remove_Wordpress_Overhead()
 	 * @return Main Remove_Wordpress_Overhead instance
 	 */
-	public static function instance ( $file = '', $version = '1.0.0', $base = 'wp_plugin_' ) {
+	public static function instance( $file = '', $version = '1.0.0', $base = 'wp_plugin_' ) {
 		if ( is_null( self::$_instance ) ) {
 			self::$_instance = new self( $file, $version, $base );
 		}
@@ -197,7 +197,7 @@ class Remove_Wordpress_Overhead {
 	 *
 	 * @since 1.0.0
 	 */
-	public function __clone () {
+	public function __clone() {
 		_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?' ), $this->_version );
 	} // End __clone ()
 
@@ -206,7 +206,7 @@ class Remove_Wordpress_Overhead {
 	 *
 	 * @since 1.0.0
 	 */
-	public function __wakeup () {
+	public function __wakeup() {
 		_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?' ), $this->_version );
 	} // End __wakeup ()
 
@@ -216,7 +216,7 @@ class Remove_Wordpress_Overhead {
 	 * @since   1.0.0
 	 * @return  void
 	 */
-	public function install () {
+	public function install() {
 		$this->_log_version_number();
 	} // End install ()
 
@@ -226,7 +226,7 @@ class Remove_Wordpress_Overhead {
 	 * @since   1.0.0
 	 * @return  void
 	 */
-	private function _log_version_number () {
+	private function _log_version_number() {
 		update_option( $this->_token . '_version', $this->_version );
 	} // End _log_version_number ()
 
@@ -239,24 +239,24 @@ class Remove_Wordpress_Overhead {
 	private function removeStuff() {
 		$options = array();
 		// get transient with options or set it of not available
-		if ( false === $options = get_transient( $this->_base . 'transient_settings' ) ) {
-			$options['rsd_link'] = get_option( $this->_base . 'remove_rsd_link' );
-			$options['wlwmanifest'] = get_option( $this->_base . 'remove_wlwmanifest_link' );
-			$options['feed_links'] = get_option( $this->_base . 'remove_rss_feed_links' );
-			$options['next_prev'] = get_option( $this->_base . 'remove_next_prev_links' );
-			$options['shortlink'] = get_option( $this->_base . 'remove_shortlink' );
-			$options['wp_generator'] = get_option( $this->_base . 'remove_wp_generator' );
-			$options['ver'] = get_option( $this->_base . 'remove_version_numbers_from_style_script' );
-			$options['emojis'] = get_option( $this->_base . 'disable_wp_emojis' );
-			$options['json_api'] = get_option( $this->_base . 'disable_json_api' );
-			$options['canonical'] = get_option( $this->_base . 'remove_canonical' );
-			$options['woo_generator'] = get_option( $this->_base . 'remove_woo_generator' );
-			$options['widgets'] = get_option( $this->_base . 'disable_wp_widgets' );
-			$options['jquery_migrate'] = get_option( $this->_base . 'remove_jquery_migrate' );
-			$options['disable_xmlrpc'] = get_option( $this->_base . 'disable_xmlrpc' );
+		if ( false === $options = get_transient( $this->_base . 'transient_settingsv2' ) ) {
+			$options['rsd_link']             = get_option( $this->_base . 'remove_rsd_link' );
+			$options['wlwmanifest']          = get_option( $this->_base . 'remove_wlwmanifest_link' );
+			$options['feed_links']           = get_option( $this->_base . 'remove_rss_feed_links' );
+			$options['next_prev']            = get_option( $this->_base . 'remove_next_prev_links' );
+			$options['shortlink']            = get_option( $this->_base . 'remove_shortlink' );
+			$options['wp_generator']         = get_option( $this->_base . 'remove_wp_generator' );
+			$options['ver']                  = get_option( $this->_base . 'remove_version_numbers_from_style_script' );
+			$options['emojis']               = get_option( $this->_base . 'disable_wp_emojicons' );
+			$options['json_api']             = get_option( $this->_base . 'disable_json_api' );
+			$options['canonical']            = get_option( $this->_base . 'remove_canonical' );
+			$options['woo_generator']        = get_option( $this->_base . 'remove_woo_generator' );
+			$options['widgets']              = get_option( $this->_base . 'disable_wp_widgets' );
+			$options['jquery_migrate']       = get_option( $this->_base . 'remove_jquery_migrate' );
+			$options['disable_xmlrpc']       = get_option( $this->_base . 'disable_xmlrpc' );
 			$options['remove_block_scripts'] = get_option( $this->_base . 'remove_block_scripts' );
-			$options['disable_gravatar'] = get_option( $this->_base . 'disable_gravatar' );
-			set_transient( $this->_base . 'transient_settings', $options );
+			$options['disable_gravatar']     = get_option( $this->_base . 'disable_gravatar' );
+			set_transient( $this->_base . 'transient_settingsv2', $options );
 		}
 
 		// remove really simple discovery link
@@ -442,7 +442,7 @@ class Remove_Wordpress_Overhead {
 		remove_filter( 'the_content_feed', 'wp_staticize_emoji' );
 		remove_filter( 'comment_text_rss', 'wp_staticize_emoji' );
 		add_filter( 'tiny_mce_plugins', array( $this, 'disable_emojis_tinymce' ) );
-		add_filter( 'wp_resource_hints', array( $this, 'disable_emojis_remove_dns_prefetch' ) );
+		add_filter( 'wp_resource_hints', array( $this, 'disable_emojis_remove_dns_prefetch' ), 1, 2 );
 	}
 
 	/**
@@ -467,11 +467,20 @@ class Remove_Wordpress_Overhead {
 	 * @return array
 	 */
 	public function disable_emojis_remove_dns_prefetch( $urls, $relation_type ) {
-		if ( 'dns-prefetch' === $relation_type ) {
-			$emojicon_svg_url = apply_filters( 'emoji_svg_url', 'https://s.w.org/images/core/emoji/2/svg/' );
-
-			$urls = array_diff( $urls, array( $emojicon_svg_url ) );
+		if ( 'dns-prefetch' !== $relation_type ) {
+			return $urls;
 		}
+
+		$emojicon_svg_url = preg_grep( '/images\/core\/emoji/', $urls );
+
+		if ( empty( $emojicon_svg_url ) ) {
+			return $urls;
+		}
+
+		// get first from array
+		$emojicon_svg_url = reset( $emojicon_svg_url );
+		$emojicon_svg_url = apply_filters( 'emoji_svg_url', $emojicon_svg_url );
+		$urls             = array_diff( $urls, array( $emojicon_svg_url ) );
 
 		return $urls;
 	}
