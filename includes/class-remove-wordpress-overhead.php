@@ -467,11 +467,20 @@ class Remove_Wordpress_Overhead {
 	 * @return array
 	 */
 	public function disable_emojis_remove_dns_prefetch( $urls, $relation_type ) {
-		if ( 'dns-prefetch' === $relation_type ) {
-			$emojicon_svg_url = apply_filters( 'emoji_svg_url', 'https://s.w.org/images/core/emoji/2/svg/' );
-
-			$urls = array_diff( $urls, array( $emojicon_svg_url ) );
+		if ( 'dns-prefetch' !== $relation_type ) {
+			return $urls;
 		}
+
+		$emojicon_svg_url = preg_grep( '/images\/core\/emoji/', $urls );
+
+		if ( empty( $emojicon_svg_url ) ) {
+			return $urls;
+		}
+
+		// get first from array
+		$emojicon_svg_url = reset( $emojicon_svg_url );
+		$emojicon_svg_url = apply_filters( 'emoji_svg_url', $emojicon_svg_url );
+		$urls             = array_diff( $urls, array( $emojicon_svg_url ) );
 
 		return $urls;
 	}
