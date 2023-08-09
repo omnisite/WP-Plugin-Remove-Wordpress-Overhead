@@ -237,9 +237,9 @@ class Remove_Wordpress_Overhead {
 	 * @return	void
 	 */
 	private function removeStuff() {
-		$options = array();
+		$options = get_transient( $this->_base . 'transient_settingsv2' );
 		// get transient with options or set it of not available
-		if ( false === $options = get_transient( $this->_base . 'transient_settingsv2' ) ) {
+		if ( false === $options ) {
 			$options['rsd_link']             = get_option( $this->_base . 'remove_rsd_link' );
 			$options['wlwmanifest']          = get_option( $this->_base . 'remove_wlwmanifest_link' );
 			$options['feed_links']           = get_option( $this->_base . 'remove_rss_feed_links' );
