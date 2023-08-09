@@ -1,12 +1,12 @@
 <?php
 /*
  * Plugin Name: Remove Wordpress Overhead
- * Version: 1.5.5
+ * Version: 1.5.5.2
  * Plugin URI: https://github.com/omnisite/WP-Plugin-Remove-Wordpress-Overhead
  * Description: Remove overhead from the <head> HTML and disable widgets you don't use
  * Author: Omnisite
  * Author URI: http://www.omnisite.nl
- * Requires at least: 5.0
+ * Requires at least: 6.0
  * Tested up to: 6.2.2
  *
  * Text Domain: remove-wordpress-overhead
@@ -36,7 +36,7 @@ require_once( 'includes/lib/class-remove-wordpress-overhead-admin-api.php' );
  * @return object Remove_Wordpress_Overhead
  */
 function Remove_Wordpress_Overhead () {
-	$instance = Remove_Wordpress_Overhead::instance( __FILE__, '1.5.5', 'rwo_' );
+	$instance = Remove_Wordpress_Overhead::instance( __FILE__, '1.5.5.2', 'rwo_' );
 
 	if ( is_null( $instance->settings ) ) {
 		$instance->settings = Remove_Wordpress_Overhead_Settings::instance( $instance );
