@@ -121,7 +121,7 @@ class Remove_Wordpress_Overhead {
 		add_action( 'init', array( $this, 'load_localisation' ), 0 );
 
 		// do the actual removing of stuff
-		$this->removeStuff();
+		$this->remove_stuff();
 
 		// delete transients on save options page
 		add_action( 'load-settings_page_remove_wordpress_overhead_settings', array( $this, 'deleteTransients' ) );
@@ -236,8 +236,8 @@ class Remove_Wordpress_Overhead {
 	 * @since	 1.0.0
 	 * @return	void
 	 */
-	private function removeStuff() {
-		$options = get_transient( $this->_base . 'transient_settingsv2' );
+	private function remove_stuff() {
+		$options = get_transient( $this->_base . 'transient_settingsv3' );
 		// get transient with options or set it of not available
 		if ( false === $options ) {
 			$options                         = [];
@@ -258,16 +258,16 @@ class Remove_Wordpress_Overhead {
 			$options['disable_xmlrpc']       = get_option( $this->_base . 'disable_xmlrpc' );
 			$options['remove_block_scripts'] = get_option( $this->_base . 'remove_block_scripts' );
 			$options['disable_gravatar']     = get_option( $this->_base . 'disable_gravatar' );
-			set_transient( $this->_base . 'transient_settingsv2', $options );
+			set_transient( $this->_base . 'transient_settingsv3', $options );
 		}
 
 		// remove dashicons css from frontend
 		if ( isset( $options['remove_dashicons'] ) && 'on' == $options['remove_dashicons'] ) {
 			add_action( 'wp_enqueue_scripts', function() {
-				if (current_user_can( 'update_core' )) {
+				if ( current_user_can( 'update_core' ) ) {
 					return;
 				}
-				wp_deregister_style('dashicons');
+				wp_deregister_style( 'dashicons' );
 			} );
 		}
 
