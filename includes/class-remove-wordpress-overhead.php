@@ -241,6 +241,7 @@ class Remove_Wordpress_Overhead {
 		// get transient with options or set it of not available
 		if ( false === $options ) {
 			$options                         = [];
+			$options['remove_dashicons']     = get_option( $this->_base . 'remove_remove_dashicons' );
 			$options['rsd_link']             = get_option( $this->_base . 'remove_rsd_link' );
 			$options['wlwmanifest']          = get_option( $this->_base . 'remove_wlwmanifest_link' );
 			$options['feed_links']           = get_option( $this->_base . 'remove_rss_feed_links' );
@@ -258,6 +259,16 @@ class Remove_Wordpress_Overhead {
 			$options['remove_block_scripts'] = get_option( $this->_base . 'remove_block_scripts' );
 			$options['disable_gravatar']     = get_option( $this->_base . 'disable_gravatar' );
 			set_transient( $this->_base . 'transient_settingsv2', $options );
+		}
+
+		// remove dashicons css from frontend
+		if ( isset( $options['remove_dashicons'] ) && 'on' == $options['remove_dashicons'] ) {
+			add_action( 'wp_enqueue_scripts', function() {
+				if (current_user_can( 'update_core' )) {
+					return;
+				}
+				wp_deregister_style('dashicons');
+			} );
 		}
 
 		// remove really simple discovery link

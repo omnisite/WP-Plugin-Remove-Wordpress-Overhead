@@ -94,6 +94,13 @@ class Remove_Wordpress_Overhead_Settings {
 			'description'			=> __( 'Check the boxes to remove stuff and keep your HTML and WP clean and website fast.', 'remove-wordpress-overhead' ),
 			'fields'				=> array(
 				array(
+					'id' 			=> 'remove_dashicons',
+					'label'			=> __( 'Remove dashicons CSS from frontend', 'remove-wordpress-overhead' ),
+					'description'	=> __( '&lt;link rel="stylesheet" id="dashicons-css" href="https://www.zwijsen.nl/wp/wp-includes/css/dashicons.min.css?ver=xxx" type="text/css" media="all" /&gt;', 'remove-wordpress-overhead' ),
+					'type'			=> 'checkbox',
+					'default'		=> ''
+				),
+				array(
 					'id' 			=> 'remove_rsd_link',
 					'label'			=> __( 'Remove RSD / EditURI Link <a href="https://en.wikipedia.org/wiki/Really_Simple_Discovery" target="_blank"><i class="dashicons dashicons-editor-help"></i></a>', 'remove-wordpress-overhead' ),
 					'description'	=> __( '&lt;link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.site.com/xmlrpc.php?rsd" /&gt;', 'remove-wordpress-overhead' ),

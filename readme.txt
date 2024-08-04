@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: wordpress, header, remove widgets, disable widgets, remove, clean, strip, version, disable, rsd link, wp generator, feed link, rss feed, shortlink, next, prev, wp generator, version number, wlwmanifest, emojicons, json api, jquery migrate, jqmigrate, xml rpc, xml-rpc, gutenberg, block, speed, pagespeed
 Requires at least: 5.0
 Tested up to: 6.4.2
-Stable tag: 1.5.6.1
+Stable tag: 1.6.0
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -15,6 +15,7 @@ Remove overhead from the <head> HTML, speed up your website and disable widgets 
 A standard WP installation contains many links in the head of your HTML (which slow down your site) and has standard widgets you might never use. You can now install this plugin and check the items you want to have removed. The saved options are cached for better performance.
 
 Header items you can remove:
+* Remove dashicons CSS from frontend
 * Remove RSD / EditURI Link
 * Remove WLW Manifest Link
 * Remove RSS Feed Links
@@ -58,6 +59,10 @@ Installing "Remove Wordpress Overhead" can be done either by searching for "Remo
 1. screenshot-1: settings screen
 
 == Changelog ==
+
+= 1.6.0 =
+* 2024-08-04
+* option to remove dashicons css from frontend
 
 = 1.5.6 =
 * 2023-12-29
