@@ -79,6 +79,15 @@ class Remove_Wordpress_Overhead {
 	public $assets_url;
 
 	/**
+	 * For generic admin functions.
+	 * @var	 object
+	 * @access  public
+	 * @since   1.6.0
+	 */
+	public $admin;
+
+
+	/**
 	 * Suffix for Javascripts.
 	 * @var	 string
 	 * @access  public
